@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Palladium Character Sheet</title>
+
+        <style>
+            .LowBonus1, .LowBonus2{
+                text-align: center;
+            }
+        </style>
+        
+    </head>
+    <body>
+        <center>Palladium Character Sheet</center>
+        <hr>
+        <form id="character">
+            <table>
+                <tr>
+                    <th></th>
+                    <th>Total</th>
+                    <th></th>
+                    <th>Rolled</th>
+                    <th></th>
+                    <th class="LowBonus0"></th>
+                    <th class="LowBonus0">Low<br>Bonus</th>
+                    <th class="LowBonus1">(+1D4+<span id="lowBonusModifier">0</span>)</th>
+                    <th class="LowBonus2">(+3/2 Per.)</th>
+                </tr>
+                <tr style="vertical-align: top;">
+                    <td>I.Q.:</td>
+                    <td><input type="text" id="IQ_Total" value="0" readonly size="1" /></td>
+                    <td>=</td>
+                    <td><input type="text" onChange="changeAttribute(IQ,this.value,true)" id="IQ_Rolled" value="0" size="1" /><br>
+                        <span id="rollIQ_breakdown" style="font-size: xx-small;">0</span></td>
+                    <td><img src="1d6.png" width="20" id="rollIQ" onclick="rerollAttribute(IQ)" /></td>
+                    <td class="LowBonus0">+</td>
+                    <td class="LowBonus0"><input type="text" id="IQ_LowBonus" value="0" readonly size="1" /></td>
+                    <td class="LowBonus1"><input type="radio" id="IQ_LowBonus1" name="LowBonus1" value="IQ" onclick="activateLowBonus(IQ,'LowBonus1');"></td>
+                    <td class="LowBonus2"><input type="radio" id="IQ_LowBonus2" name="LowBonus2" value="IQ" onclick="activateLowBonus(IQ,'LowBonus2');"></td>
+                </tr>
+                <tr style="vertical-align: top;">
+                    <td>M.E.:</td>
+                    <td><input type="text" id="ME_Total" value="0" readonly size="1" /></td>
+                    <td>=</td>
+                    <td><input type="text" onChange="changeAttribute(ME,this.value,true)"  id="ME_Rolled" value="0" size="1" /><br>
+                        <span id="rollME_breakdown" style="font-size: xx-small;">0</span></td>
+                    <td><img src="1d6.png" width="20" id="rollME" onclick="rerollAttribute(ME)" /></td>
+                    <td class="LowBonus0">+</td>
+                    <td class="LowBonus0"><input type="text" id="ME_LowBonus" value="0" readonly size="1" /></td>
+                    <td class="LowBonus1"><input type="radio" id="ME_LowBonus1" name="LowBonus1" value="ME" onclick="activateLowBonus(ME,'LowBonus1');"></td>
+                    <td class="LowBonus2"><input type="radio" id="ME_LowBonus2" name="LowBonus2" value="ME" onclick="activateLowBonus(ME,'LowBonus2');"></td>
+                    
+                    
+                </tr>
+                
+                <tr style="vertical-align: top;">
+                    <td>M.A.:</td>
+                    <td><input type="text" id="MA_Total" value="0" readonly size="1" /></td>
+                    <td>=</td>
+                    <td><input type="text" onChange="changeAttribute(MA,this.value,true)"  id="MA_Rolled" value="0" size="1" /><br>
+                        <span id="rollMA_breakdown" style="font-size: xx-small;">0</span></td>
+                    <td><img src="1d6.png" width="20" id="rollMA" onclick="rerollAttribute(MA)" /></td>
+                    <td class="LowBonus0">+</td>
+                    <td class="LowBonus0"><input type="text" id="MA_LowBonus" value="0" readonly size="1" /></td>
+                    <td class="LowBonus1"><input type="radio" id="MA_LowBonus1" name="LowBonus1" value="MA" onclick="activateLowBonus(MA,'LowBonus1');"></td>
+                    <td class="LowBonus2"><input type="radio" id="MA_LowBonus2" name="LowBonus2" value="MA" onclick="activateLowBonus(MA,'LowBonus2');"></td>
+                    
+                </tr>
+                <tr style="vertical-align: top;">
+                    <td>P.S.:</td>
+                    <td><input type="text" id="PS_Total" value="0" readonly size="1" /></td>
+                    <td>=</td>
+                    <td><input type="text" onChange="changeAttribute(PS,this.value,true)"  id="PS_Rolled" value="0" size="1" /><br>
+                        <span id="rollPS_breakdown" style="font-size: xx-small;">0</span></td>
+                    <td><img src="1d6.png" width="20" id="rollPS" onclick="rerollAttribute(PS)" /></td>
+                    <td class="LowBonus0">+</td>
+                    <td class="LowBonus0"><input type="text" id="PS_LowBonus" value="0" readonly size="1" /></td>
+                    <td class="LowBonus1"><input type="radio" id="PS_LowBonus1" name="LowBonus1" value="PS" onclick="activateLowBonus(PS,'LowBonus1');"></td>
+                    <td class="LowBonus2"><input type="radio" id="PS_LowBonus2" name="LowBonus2" value="PS" onclick="activateLowBonus(PS,'LowBonus2');"></td>
+                    
+                    
+                </tr>
+                <tr style="vertical-align: top;">
+                    <td>P.P.:</td>
+                    <td><input type="text" id="PP_Total" value="0" readonly size="1" /></td>
+                    <td>=</td>
+                    <td><input type="text" onChange="changeAttribute(PP,this.value,true)"  id="PP_Rolled" value="0" size="1" /><br>
+                        <span id="rollPP_breakdown" style="font-size: xx-small;">0</span></td>
+                    <td><img src="1d6.png" width="20" id="rollPP" onclick="rerollAttribute(PP)" /></td>
+                    <td class="LowBonus0">+</td>
+                    <td class="LowBonus0"><input type="text" id="PP_LowBonus" value="0" readonly size="1" /></td>
+                    <td class="LowBonus1"><input type="radio" id="PP_LowBonus1" name="LowBonus1" value="PP" onclick="activateLowBonus(PP,'LowBonus1');"></td>
+                    <td class="LowBonus2"><input type="radio" id="PP_LowBonus2" name="LowBonus2" value="PP" onclick="activateLowBonus(PP,'LowBonus2');"></td>
+                    
+                    
+                </tr>
+                <tr style="vertical-align: top;">
+                    <td>P.E.:</td>
+                    <td><input type="text" id="PE_Total" value="0" readonly size="1" /></td>
+                    <td>=</td>
+                    <td><input type="text" onChange="changeAttribute(PE,this.value,true)"  id="PE_Rolled" value="0" size="1" /><br>
+                        <span id="rollPE_breakdown" style="font-size: xx-small;">0</span></td>
+                    <td><img src="1d6.png" width="20" id="rollPE" onclick="rerollAttribute(PE)" /></td>
+                    <td class="LowBonus0">+</td>
+                    <td class="LowBonus0"><input type="text" id="PE_LowBonus" value="0" readonly size="1" /></td>
+                    <td class="LowBonus1"><input type="radio" id="PE_LowBonus1" name="LowBonus1" value="PE" onclick="activateLowBonus(PE,'LowBonus1');"></td>
+                    <td class="LowBonus2"><input type="radio" id="PE_LowBonus2" name="LowBonus2" value="PE" onclick="activateLowBonus(PE,'LowBonus2');"></td>
+                    
+                   
+                </tr>
+                <tr style="vertical-align: top;">
+                    <td>P.B.:</td>
+                    <td><input type="text" id="PB_Total" value="0" readonly size="1" /></td>
+                    <td>=</td>
+                    <td><input type="text" onChange="changeAttribute(PB,this.value,true)"  id="PB_Rolled" value="0" size="1" /><br>
+                        <span id="rollPB_breakdown" style="font-size: xx-small;">0</span></td>
+                    <td><img src="1d6.png" width="20" id="rollPB" onclick="rerollAttribute(PB)" /></td>
+                    <td class="LowBonus0">+</td>
+                    <td class="LowBonus0"><input type="text" id="PB_LowBonus" value="0" readonly size="1" /></td>
+                    <td class="LowBonus1"><input type="radio" id="PB_LowBonus1" name="LowBonus1" value="PB" onclick="activateLowBonus(PB,'LowBonus1');"></td>
+                    <td class="LowBonus2"><input type="radio" id="PB_LowBonus2" name="LowBonus2" value="PB" onclick="activateLowBonus(PB,'LowBonus2');"></td>
+                    
+                    
+                </tr>
+                <tr style="vertical-align: top;">
+                    <td>Spd.:</td>
+                    <td><input type="text" id="Spd_Total" value="0" readonly size="1" /></td>
+                    <td>=</td>
+                    <td><input type="text" onChange="changeAttribute(Spd,this.value,true)"  id="Spd_Rolled" value="0" size="1" /><br>
+                        <span id="rollSpd_breakdown" style="font-size: xx-small;">0</span></td>
+                    <td><img src="1d6.png" width="20" id="rollSpd" onclick="rerollAttribute(Spd)" /></td>
+                    <td class="LowBonus0">+</td>
+                    <td class="LowBonus0"><input type="text" id="Spd_LowBonus" value="0" readonly size="1" /></td>
+                    <td class="LowBonus1"><input type="radio" id="Spd_LowBonus1" name="LowBonus1" value="Spd" onclick="activateLowBonus(Spd,'LowBonus1');"></td>
+                    <td class="LowBonus2"><input type="radio" id="Spd_LowBonus2" name="LowBonus2" value="Spd" onclick="activateLowBonus(Spd,'LowBonus2');"></td>
+                    
+                    
+                </tr>
+                <tr style="vertical-align: top;">
+                    <td>Per.:</td>
+                    <td><input type="text" id="Per_Total" value="0" readonly size="1" /></td>
+                    <td>=</td>
+                    <td></td>
+                    <td></td>
+                    <td class="LowBonus0" id="Per_LowBonus0A">+</td>
+                    <td class="LowBonus0" id="Per_LowBonus0B"><input type="text" id="Per_LowBonus" value="0" readonly size="1" /></td>
+                    <td class="LowBonus1"></td>
+                    <td class="LowBonus2"><input type="radio" id="Per_LowBonus2" name="LowBonus2" value="Per" onclick="activateLowBonus(Per,'LowBonus2');"></td>
+                    <td>+</td>
+                    <td id="Per_IQBonus0A"><input type="text" id="Per_IQBonus" value="0" readonly size="1" /></td>
+                    <td>+</td>
+                    <td id="Per_SpdBonus0A"><input type="text" id="Per_SpdBonus" value="0" readonly size="1" /></td>
+                </tr>
+            </table>
+            <br>
+            <input id="clickMe" type="button" value="Roll All Attributes" onclick = "rollAllAttributes(true);" /><br>
+            <br>
+            Saving Throws:<br>
+            Horror Factor: <input type="text" id="SaveHorror_MEBonus" value="+0" readonly size="1" /><br>
+            Illusions: <input type="text" id="SaveIllusions_IQBonus" value="+0" readonly size="1" />+<input type="text" id="SaveIllusions_MEBonus" value="+0" readonly size="1" /><br>
+            Battle of Will: <input type="text" id="SaveWill_MEBonus" value="+0" readonly size="1" /><br>
+            Mind Control: <input type="text" id="SaveMindControl_MEBonus" value="+0" readonly size="1" /> (magical-, psionic-, or drug-induced)<br>
+            Posession: <input type="text" id="SavePosession_MEBonus" value="+0" readonly size="1" /><br>
+            Psionics: <input type="text" id="SavePsionic_MEBonus" value="+0" readonly size="1" /><br>
+            Insanity: <input type="text" id="SaveInsanity_MEBonus" value="+0" readonly size="1" /><br>
+            Coma/Death: <input type="text" id="SaveComaDeath_PEBonus" value="+0%" readonly size="1" /><br>
+            Magic: <input type="text" id="SaveMagic_PEBonus" value="+0" readonly size="1" /> (not demonic curses or posession)<br>
+            Poisons/Toxins/Drugs: <input type="text" id="SavePoison_PEBonus" value="+0" readonly size="1" /><br>
+            Disease: <input type="text" id="SaveDisease_PEBonus" value="+0" readonly size="1" /><br>
+            <br>
+            I.Q. Skill Bonus: <input type="text" id="Skill_IQBonus" value="+0%" readonly size="1" /><br>
+            <br>
+            Horror Factor: <input type="text" id="HorrorFactor_PBBonus" value="+0" readonly size="1" /><br>
+            Trust: <input type="text" id="TrustIntimidate_MABonus" value="+0%" readonly size="1" /><br>
+            Intimidate: <input type="text" id="TrustIntimidate_MABonus" value="+0%" readonly size="1" />+<input type="text" id="Intimidate_PBBonus" value="+0%" readonly size="1" /><br>
+            Charm/Impress: <input type="text" id="CharmImpress_PBBonus" value="+0%" readonly size="1" /><br>
+            <br>
+            Actions per Melee: <input type="text" id="Actions_Total" value="2" readonly size="5" /><br>
+            Initiative <input type="text" id="Initiative_PPBonus" value="+0" readonly size="5" /> + <input type="text" id="Initiative_SpdBonus" value="+0" readonly size="5" /><br>
+            P.S. Type: <input type="text" id="PS_Type" value="Normal" readonly size="5" /><br>
+            H2H Damage: <input type="text" id="H2HDamage_PSBonus" value="+0" readonly size="1" /><br>
+            Parry: <input type="text" id="Parry_PPBonus" value="+0" readonly size="1" /><br>
+            Dodge: <input type="text" id="Dodge_PPBonus" value="+0" readonly size="1" /> + <input type="text" id="Dodge_SpdBonus" value="+0" readonly size="1" /><br>
+            Strike: <input type="text" id="Strike_PPBonus" value="+0" readonly size="1" /><br>
+            Disarm: <input type="text" id="Disarm_PPBonus" value="+0" readonly size="1" /><br>
+            Entangle: <input type="text" id="Entangle_PPBonus" value="+0" readonly size="1" /><br>
+            Pull Punch: <input type="text" id="Pull_PPBonus" value="+0" readonly size="1" /><br>
+            Roll with Punch or Impact: <input type="text" id="Roll_PPBonus" value="+0" readonly size="1" /><br>
+            <br>            
+            Speed: <input type="text" id="Spd_mph" value="0" readonly size="5" /> mph | <input type="text" id="Spd_kph" value="0" readonly size="5" /> kph | <input type="text" id="Spd_ypminute" value="0" readonly size="1" /> yards per minute | <input type="text" id="Spd_ypmelee" value="0" readonly size="1" /> yards per melee | <input type="text" id="Spd_ypaction" value="0" readonly size="1" /> yards per action<br>
+        </form>
+        
+        <script>
+            class attribute {
+                constructor(name) {
+                    this._name = name;
+
+                    this._numDice = 3;
+                    this._diceSides = 6;
+                    this._rollBonus = 0;
+                    this._standard = true;
+
+                    this._rolled1 = 10;
+                    this._rolled2 = 0;
+                    this._rolled3 = 0;
+                    this._rolled = 10;
+                    this._lowBonus = 0;
+                    this._IQBonus = 0;
+                    this._SpdBonus = 0;
+                    this._total = 0;
+                    this.calculateTotal();
+                }
+
+                get name() {
+                    return this._name;
+                }
+
+                get numDice() {
+                    return this._numDice;
+                }
+
+                set numDice(i) {
+                    this._numDice = i;
+                }
+
+                get diceSides() {
+                    return this._diceSides;
+                }
+
+                set diceSides(i) {
+                    this._diceSides = i;
+                }
+
+                get rollBonus() {
+                    return this._rollBonus;
+                }
+
+                set rollBonus(i) {
+                    this._rollBonus = i;
+                }
+
+                get standard() {
+                    return this._standard;
+                }
+
+                set standard(i) {
+                    this._standard = i;
+                }
+
+                get rolled1() {
+                    return this._rolled1;
+                }
+
+                set rolled1(i) {
+                    this._rolled1 = Number(i);
+                }
+
+                get rolled2() {
+                    return this._rolled2;
+                }
+
+                set rolled2(i) {
+                    this._rolled2 = Number(i);
+                }
+
+                get rolled3() {
+                    return this._rolled3;
+                }
+
+                set rolled3(i) {
+                    this._rolled3 = Number(i);
+                }
+
+                get rolled() {
+                    return this._rolled;
+                }
+
+                set rolled(i) {
+                    this._rolled = Number(i);
+                    this.calculateTotal();
+                }
+
+                get lowBonus() {
+                    return this._lowBonus;
+                }
+
+                set lowBonus(i) {
+                    this._lowBonus = i;
+                    this.calculateTotal();
+                }
+                get IQBonus() {
+                    return this._IQBonus;
+                }
+
+                set IQBonus(i) {
+                    this._IQBonus = i;
+                    this.calculateTotal();
+                }
+                get SpdBonus() {
+                    return this._SpdBonus;
+                }
+
+                set SpdBonus(i) {
+                    this._SpdBonus = i;
+                    this.calculateTotal();
+                }
+                
+                get total() {
+                    return this._total;
+                }
+
+                calculateTotal() {
+                    if(this._name == "Per") {
+                        this._total = this._lowBonus + this._IQBonus + this._SpdBonus;
+                    } else {
+                        this._total = this._rolled + this._lowBonus;
+                    }
+                }
+            }
+
+            var IQ = new attribute("IQ");
+            var ME = new attribute("ME");
+            var MA = new attribute("MA");
+            var PS = new attribute("PS");
+            var PP = new attribute("PP");
+            var PE = new attribute("PE");
+            var PB = new attribute("PB");
+            var Spd = new attribute("Spd");
+            var Per = new attribute("Per");
+
+            var attributes = [IQ,ME,MA,PS,PP,PE,PB,Spd,Per];
+
+            var lowBonusTotal = 0;
+            
+            var SaveHorror_MEBonus = 0;
+            var SaveIllusions_IQBonus = 0;
+            var SaveIllusions_MEBonus = 0;
+            var SaveWill_MEBonus = 0;
+            var SaveMindControl_MEBonus = 0;
+            var SavePosession_MEBonus = 0;
+            var SavePsionic_MEBonus = 0;
+            var SaveInsanity_MEBonus = 0;
+            var SaveComaDeath_PEBonus = 0;
+            var SaveMagic_PEBonus = 0;
+            var SavePoison_PEBonus = 0;
+            var SaveDisease_PEBonus = 0;
+
+            var Skill_IQBonus = 0;
+
+            var HorrorFactor_PBBonus = 0;
+            var TrustIntimidate_MABonus = 0;
+            var Intimidate_PBBonus = 0;
+            var CharmImpress_PBBonus = 0;
+
+            var Actions_Total = 2;
+            var Initiative_PPBonus = 0;
+            var Initiative_SpdBonus = 0;
+            var PS_Type = "Normal";
+            var H2HDamage_PSBonus = 0;
+            var Parry_PPBonus = 0;
+            var Dodge_PPBonus = 0;
+            var Dodge_SpdBonus = 0;
+            var Strike_PPBonus = 0;
+            var Disarm_PPBonus = 0;
+            var Entangle_PPBonus = 0;
+            var Pull_PPBonus = 0;
+            var Roll_PPBonus = 0;
+            
+            var Spd_mph = 0;
+            var Spd_kph = 0;
+            var Spd_ypminute = 0;
+            var Spd_ypmelee = 0;
+            var Spd_ypaction = 0;
+            var actions = 1;
+
+            updateAttributes();
+
+            function getRandomPosInt(max) {
+                return Math.floor(Math.random() * max) + 1;
+            }
+
+            function rollDice(numDice, diceSides, rollBonus) {
+	            var totalRoll = 0;
+	            for (i = 0; i < numDice; i++) {
+		            totalRoll += getRandomPosInt(diceSides);
+	            }
+	            return totalRoll + rollBonus;
+            }
+
+            function rollAttribute(attribute,numDice,diceSides,rollBonus,standard) {
+		        if (standard) {
+			        var roll1 = 0;
+                    var roll2 = 0;
+                    var roll3 = 0;
+			        roll1 = rollDice(3,6,0); // 3-18
+			        if (roll1 >= 16) {
+				        roll2 = rollDice(1,6,0); // 17-24
+				        if (roll2 == 6) {
+				    	    roll3 = rollDice(1,6,0); // 22-30
+				        }
+			        }
+                    attribute.rolled1 = roll1;
+                    attribute.rolled2 = roll2;
+                    attribute.rolled3 = roll3;
+                    if (attribute.rolled > 0 && attribute.rolled < 7) {
+                        lowBonusTotal--;
+                    }
+                    attribute.rolled = roll1 + roll2 + roll3;
+                    if (attribute.rolled > 0 && attribute.rolled < 7) {
+                        lowBonusTotal++;
+                        document.getElementById(attribute.name+"_LowBonus1").checked = false;
+                        document.getElementById(attribute.name+"_LowBonus2").checked = false;
+                    }
+		        } else {
+                    attribute.rolled = rollDice(numDice,diceSides,rollBonus);
+		        }
+	        }
+
+            function rerollAttribute(attribute) {
+                rollAttribute(attribute,3,6,0,true);
+                updateAttributes();
+            }
+
+            function changeAttribute(attribute,value,standard) {
+                if (standard) {
+                    if (attribute.rolled > 0 && attribute.rolled < 7) {
+                        lowBonusTotal--;
+                    }
+                    attribute.rolled = value;
+                    if (attribute.rolled > 0 && attribute.rolled < 7) {
+                        lowBonusTotal++;
+                        document.getElementById(attribute.name+"_LowBonus1").checked = false;
+                        document.getElementById(attribute.name+"_LowBonus2").checked = false;
+                    }
+		        } else {
+                    attribute.rolled = value;
+		        }
+                updateAttributes();
+            }
+
+            function checkLowBonuses() {
+                for (var i=0; i < attributes.length; i++) {
+                    attributes[i].lowBonus = 0;
+                }
+                var getSelectedValue1 = document.querySelector("input[name='LowBonus1']:checked");
+                if(getSelectedValue1 != null) {
+                    if (lowBonusTotal == 1) {
+                        window[getSelectedValue1.value].lowBonus = rollDice(1, 4, 3);
+                    } else if (lowBonusTotal > 1) {
+                        window[getSelectedValue1.value].lowBonus = rollDice(1, 4, 5);
+                    }
+                }
+                var getSelectedValue2 = document.querySelector("input[name='LowBonus2']:checked");
+                if(getSelectedValue2 != null) {
+                    if(getSelectedValue2.value == "Per") {
+                        Per.lowBonus = 2;
+                    } else {
+                        window[getSelectedValue2.value].lowBonus = 3;
+                    }
+                }
+            }
+            
+            function activateLowBonus(attribute,buttonName) {
+                if (buttonName == "LowBonus1") {
+                    document.getElementById(attribute.name+"_LowBonus2").checked = false;
+                } else if (buttonName == "LowBonus2") {
+                    if(attribute != Per) {
+                        document.getElementById(attribute.name+"_LowBonus1").checked = false;
+                    }
+                }
+                updateAttributes();
+            }
+
+            function resetLowBonuses() {
+                if (lowBonusTotal == 0) {
+                    elms = document.getElementsByClassName("LowBonus0");
+                    for (i = 0; i < elms.length; i++){
+                        elms[i].style.visibility = "hidden";
+                    }
+                    elms = document.getElementsByClassName("LowBonus1");
+                    for (i = 0; i < elms.length; i++){
+                        elms[i].style.visibility = "hidden";
+                    }
+                    elms = document.getElementsByClassName("LowBonus2");
+                    for (i = 0; i < elms.length; i++){
+                        elms[i].style.visibility = "hidden";
+                    }
+                    elms= document.getElementsByName("LowBonus1");
+                    for (i = 0; i < elms.length; i++){
+                        elms[i].checked = false;
+                    }
+                    elms= document.getElementsByName("LowBonus2");
+                    for (i = 0; i < elms.length; i++){
+                        elms[i].checked = false;
+                    }
+                    document.getElementById("Per_LowBonus0A").style.visibility = "hidden";
+                    document.getElementById("Per_LowBonus0A").checked = false;
+                    document.getElementById("Per_LowBonus0B").style.visibility = "hidden";
+                    document.getElementById("Per_LowBonus0B").checked = false;
+                    for (i=0; i < attributes.length - 1; i++) {
+                        document.getElementById(attributes[i].name+"_LowBonus1").style.visibility = "hidden";
+                        document.getElementById(attributes[i].name+"_LowBonus2").style.visibility = "hidden";
+                    }
+                } else if (lowBonusTotal == 1) {
+                    elms = document.getElementsByClassName("LowBonus0");
+                    for (i = 0; i < elms.length; i++){
+                        elms[i].style.visibility = "visible";
+                    }
+                    elms = document.getElementsByClassName("LowBonus1");
+                    for (i = 0; i < elms.length; i++){
+                        elms[i].style.visibility = "visible";
+                    }
+                    document.getElementById("lowBonusModifier").innerHTML = "3";
+                    elms = document.getElementsByClassName("LowBonus2");
+                    for (i = 0; i < elms.length; i++){
+                        elms[i].style.visibility = "hidden";
+                    }
+                    elms= document.getElementsByName("LowBonus2");
+                    for (i = 0; i < elms.length; i++){
+                        elms[i].checked = false;
+                    }
+                    document.getElementById("Per_LowBonus0A").style.visibility = "hidden";
+                    document.getElementById("Per_LowBonus0A").checked = false;
+                    document.getElementById("Per_LowBonus0B").style.visibility = "hidden";
+                    document.getElementById("Per_LowBonus0B").checked = false;
+                    for (i=0; i < attributes.length - 1; i++) {
+                        if (attributes[i].rolled < 7) {
+                            document.getElementById(attributes[i].name+"_LowBonus1").style.visibility = "hidden";
+                        } else {
+                            document.getElementById(attributes[i].name+"_LowBonus1").style.visibility = "visible";
+                        }
+                        document.getElementById(attributes[i].name+"_LowBonus2").style.visibility = "hidden";
+                    }
+                } else if (lowBonusTotal > 1) {
+                    elms = document.getElementsByClassName("LowBonus0");
+                    for (i = 0; i < elms.length; i++){
+                        elms[i].style.visibility = "visible";
+                    }
+                    elms = document.getElementsByClassName("LowBonus1");
+                    for (i = 0; i < elms.length; i++){
+                        elms[i].style.visibility = "visible";
+                    }
+                    document.getElementById("lowBonusModifier").innerHTML = "5";
+                    elms = document.getElementsByClassName("LowBonus2");
+                    for (i = 0; i < elms.length; i++){
+                        elms[i].style.visibility = "visible";
+                    }
+                    document.getElementById("Per_LowBonus0A").style.visibility = "visible";
+                    document.getElementById("Per_LowBonus0B").style.visibility = "visible";
+                    for (i=0; i < attributes.length - 1; i++) {
+                        if (attributes[i].rolled < 7) {
+                            document.getElementById(attributes[i].name+"_LowBonus1").style.visibility = "hidden";
+                            document.getElementById(attributes[i].name+"_LowBonus2").style.visibility = "hidden";
+                        } else {
+                            document.getElementById(attributes[i].name+"_LowBonus1").style.visibility = "visible";
+                            document.getElementById(attributes[i].name+"_LowBonus2").style.visibility = "visible";
+                        }
+                    }
+                }
+            }
+
+            function rollAllAttributes(standard) {
+                if(standard) {
+                    for (var i=0; i < attributes.length - 1; i++) {
+                        rollAttribute(attributes[i],3,6,0,true);
+                    }
+                } else {
+                    for (i=0; i < attributes.length - 1; i++) {
+                        rollAttribute(attributes[i],attributes[i].numDice,attributes[i].diceSides,attributes[i].rollBonus,false);
+                    }
+                }
+                updateAttributes();
+            }
+
+            function updateAttributes() {
+                resetLowBonuses();
+                checkLowBonuses();
+                updateBonuses();
+                for (i=0; i < attributes.length - 1; i++) {
+                    document.getElementById(attributes[i].name+"_Rolled").value = attributes[i].rolled;
+                    document.getElementById("roll"+attributes[i].name+"_breakdown").innerHTML = attributes[i].rolled1;
+                    if(attributes[i].rolled2 > 0) {
+                        document.getElementById("roll"+attributes[i].name+"_breakdown").innerHTML += " + "+attributes[i].rolled2;
+                    }
+                    if(attributes[i].rolled3 > 0) {
+                        document.getElementById("roll"+attributes[i].name+"_breakdown").innerHTML += " + "+attributes[i].rolled3;
+                    }
+
+                    document.getElementById(attributes[i].name+"_LowBonus").value = attributes[i].lowBonus;
+                    document.getElementById(attributes[i].name+"_Total").value = attributes[i].total;
+                }
+                document.getElementById("Per_LowBonus").value = Per.lowBonus;
+                document.getElementById("Per_Total").value = "+"+Per.total;
+                document.getElementById("Per_IQBonus").value = Per.IQBonus;
+                document.getElementById("Per_SpdBonus").value = Per.SpdBonus;
+            }
+
+            function updateBonuses() {
+                IQBonus();
+                MEBonus();
+                MABonus();
+                PSBonus();
+                PPBonus();
+                PEBonus();
+                PBBonus();
+                SpdBonus();
+                SpeedChart();
+                
+                document.getElementById("SaveHorror_MEBonus").value = "+"+SaveHorror_MEBonus;
+                document.getElementById("SaveIllusions_IQBonus").value = "+"+SaveIllusions_IQBonus;
+                document.getElementById("SaveIllusions_MEBonus").value = "+"+SaveIllusions_MEBonus;
+                document.getElementById("SaveWill_MEBonus").value = "+"+SaveWill_MEBonus;
+                document.getElementById("SaveMindControl_MEBonus").value = "+"+SaveMindControl_MEBonus;
+                document.getElementById("SavePosession_MEBonus").value = "+"+SavePosession_MEBonus;
+                document.getElementById("SavePsionic_MEBonus").value = "+"+SavePsionic_MEBonus;
+                document.getElementById("SaveInsanity_MEBonus").value = "+"+SaveInsanity_MEBonus;
+                document.getElementById("SaveComaDeath_PEBonus").value = "+"+SaveComaDeath_PEBonus+"%";
+                document.getElementById("SaveMagic_PEBonus").value = "+"+SaveMagic_PEBonus;
+                document.getElementById("SavePoison_PEBonus").value = "+"+SavePoison_PEBonus;
+                document.getElementById("SaveDisease_PEBonus").value = "+"+SaveDisease_PEBonus;
+
+                document.getElementById("Skill_IQBonus").value = "+"+Skill_IQBonus+"%";
+
+                document.getElementById("HorrorFactor_PBBonus").value = "+"+HorrorFactor_PBBonus;
+                document.getElementById("TrustIntimidate_MABonus").value = TrustIntimidate_MABonus+"%";
+                document.getElementById("Intimidate_PBBonus").value = Intimidate_PBBonus+"%";
+                document.getElementById("CharmImpress_PBBonus").value = CharmImpress_PBBonus+"%";
+                
+                document.getElementById("Actions_Total").value = Actions_Total;
+                document.getElementById("Initiative_PPBonus").value = Initiative_PPBonus;
+                document.getElementById("Initiative_SpdBonus").value = Initiative_SpdBonus;
+                document.getElementById("PS_Type").value = PS_Type;
+                document.getElementById("H2HDamage_PSBonus").value = "+"+H2HDamage_PSBonus;
+                document.getElementById("Parry_PPBonus").value = "+"+Parry_PPBonus;
+                document.getElementById("Dodge_PPBonus").value = "+"+Dodge_PPBonus;
+                document.getElementById("Dodge_SpdBonus").value = "+"+Dodge_SpdBonus;
+                document.getElementById("Strike_PPBonus").value = "+"+Strike_PPBonus;
+                document.getElementById("Disarm_PPBonus").value = "+"+Disarm_PPBonus;
+                document.getElementById("Entangle_PPBonus").value = "+"+Entangle_PPBonus;
+                document.getElementById("Pull_PPBonus").value = "+"+Pull_PPBonus;
+                document.getElementById("Roll_PPBonus").value = "+"+Roll_PPBonus;
+                
+                document.getElementById("Spd_mph").value = Spd_mph;
+                document.getElementById("Spd_kph").value = Spd_kph;
+                document.getElementById("Spd_ypminute").value = Spd_ypminute;
+                document.getElementById("Spd_ypmelee").value = Spd_ypmelee;
+                document.getElementById("Spd_ypaction").value = Spd_ypaction;
+            }
+
+            function IQBonus() {
+                //all occ skills
+                //all occ related skills (including from progression)
+                //all secondary skills (including from occ progression)
+                //regular skill bonuses
+                //base skill proficincy as written
+                //per level bonus as written
+                Skill_IQBonus = 0;
+                Per_IQBonus = 0;
+                SaveIllusions_IQBonus = 0;
+                if (IQ.total <= 2) {
+                    //1d4+1 occ skills
+                    //no occ related skills
+                    //1d4 secondary skills (none from progression)
+                    //no skill bonuses
+                    //base skill proficincy halved
+                    //per level bonus halved and rounded down
+                } else if (IQ.total <= 4) {
+                    //occ skills halved
+                    //occ related skills 1d4
+                    //no additional skills at level advancement
+                    //only occ skills get bonuses, halved
+                    //1d4 secondary skills
+                    //new seconday skill +1 at 3, 6, 10, 15 (ignore occ prgression)
+                } else if (IQ.total <= 6) {
+                    //occ skills -4
+                    //occ related skills halved
+                    //skill bonuses halved
+                    //+1d4+2 secondary skills
+                } else if (IQ.total <= 8) {
+                    //occ related skills halved
+                    //+1d4 secondary skills
+                } else if (IQ.total >= 16 && IQ.total <= 30) {
+                    Skill_IQBonus = IQ.total - 14;
+                } else if (IQ.total > 30) {
+                    Skill_IQBonus = ((Math.floor((IQ.total - 30)/5))*2) + 16;
+                    Per_IQBonus = (Math.floor((IQ.total - 30)/10));
+                }
+                if (IQ.total > 30 && IQ.total < 49) {
+                    SaveIllusions_IQBonus = (Math.ceil((IQ.total - 30)/3));
+                } else if (IQ.total >= 49) {
+                    SaveIllusions_IQBonus = 7;
+                }
+                //"one time bonus to skills"
+                //    Skills added later?
+                //    IQ upped or lowered later?
+            }
+
+            function MEBonus() {
+                SaveHorror_MEBonus = 0;
+                SaveIllusions_MEBonus = 0;
+                SaveWill_MEBonus = 0;
+                SavePsionic_MEBonus = 0;
+                SaveMindControl_MEBonus = 0;
+                SaveInsanity_MEBonus = 0;
+                SavePosession_MEBonus = 0;
+                //0 extra Phobias
+                //spills guts after undetermined minutes of interrogation
+                //TellConvincingLie: undetermined
+                //vs Seduction: +0% to opposer
+                //vs Intimidation: +0% to opposer
+                //Skill_Barter.MEBonus = 0; 
+                //Skill_Interrogation.MEBonus = 0;
+                //Skill_Performance.MEBonus = 0;
+                //Skill_PublicSpeaking.MEBonus = 0;
+                //Skill_Seduction.MEBonus = 0;
+                //Skill_UndercoverOps.MEBonus = 0;
+                if (ME.total <= 2) {
+                    SaveHorror_MEBonus = -8;
+                    SaveIllusions_MEBonus = -6;
+                    SaveWill_MEBonus = -6;
+                    SavePsionic_MEBonus = -6;
+                    SaveMindControl_MEBonus = -6;
+                    SaveInsanity_MEBonus = -5;
+                    SavePosession_MEBonus = -6;
+                    //1D4+1 Phobias
+                    //spills guts after 1d4 minutes of interrogation
+                    //TellConvincingLie: 0%
+                    //vs Seduction: +40% to opposer
+                    //vs Intimidation: +30% to opposer
+                    //Skill_Barter.MEBonus = *0; 
+                    //Skill_Interrogation.MEBonus = *0;
+                    //Skill_Performance.MEBonus = *0;
+                    //Skill_PublicSpeaking.MEBonus = *0;
+                    //Skill_Seduction.MEBonus = *0;
+                    //Skill_UndercoverOps.MEBonus = *0;
+                } else if (ME.total <= 4) {
+                    SaveHorror_MEBonus = -6;
+                    SaveIllusions_MEBonus = -4;
+                    SaveWill_MEBonus = -3;
+                    SavePsionic_MEBonus = -3;
+                    SaveMindControl_MEBonus = -3;
+                    SaveInsanity_MEBonus = -2;
+                    SavePosession_MEBonus = -3;
+                    //+1 Phobia
+                    //spills guts after 2d4 minutes of interrogation
+                    //TellConvincingLie: 15%
+                    //vs Seduction: +20% to opposer
+                    //vs Intimidation: +20% to opposer
+                    //Skill_Barter.MEBonus = -30;
+                    //Skill_Interrogation.MEBonus = -30;
+                    //Skill_Performance.MEBonus = -30;
+                    //Skill_PublicSpeaking.MEBonus = -30;
+                    //Skill_Seduction.MEBonus = -30;
+                    //Skill_UndercoverOps.MEBonus = -30;
+                } else if (ME.total <= 7) {
+                    SaveHorror_MEBonus = -3;
+                    SaveIllusions_MEBonus = -2;
+                    SaveWill_MEBonus = -1;
+                    SavePsionic_MEBonus = -1;
+                    SaveMindControl_MEBonus = -1;
+                    SaveInsanity_MEBonus = -1;
+                    SavePosession_MEBonus = -1;
+                    //Skill_Barter.MEBonus = -10;
+                    //Skill_Interrogation.MEBonus = -10;
+                    //Skill_Performance.MEBonus = -10;
+                    //Skill_PublicSpeaking.MEBonus = -10;
+                    //Skill_Seduction.MEBonus = -10;
+                    //Skill_UndercoverOps.MEBonus = -10;
+                } else if (ME.total >= 16 && ME.total <= 30) {
+                    SavePsionic_MEBonus = (Math.floor(ME.total / 2)) - 7;
+                    if (ME.total <= 19) {
+                        SaveInsanity_MEBonus = (Math.floor(ME.total / 2)) - 7;
+                    } else { // ME >= 20
+                        SaveInsanity_MEBonus = ME.total - 17;
+                    }
+                } 
+                if (ME.total >= 30 && ME.total <= 60) {
+                    SavePosession_MEBonus = (Math.floor((ME.total - 30)/10)) + 1;
+                    //unlear if this applies to ehnaced humans or just Ancient Evils, demigods, godlings, gods, Demon Lords, or Alien Intelligences
+                }
+            }
+
+            function MABonus() {
+                //Skill_Disguise.MABonus = 0;
+                //Skill_Barter.MABonus = 0;
+                //Skill_FindContraband.MABonus = 0;
+                //Skill_Intelligence.MABonus = 0;
+                //Skill_*IntelligenceGathering.MABonus = 0;
+                //Skill_Interrogation.MABonus = 0;
+                //Skill_Performance.MABonus = 0;
+                //Skill_PubicSpeaking.MABonus = 0;
+                //Skill_Seduction.MABonus = 0;
+                //Skill_Sing.MABonus = 0;
+                //Skill_Gambling.MABonus = 0;
+                //Skill_Prowl.MABonus = 0;
+                //Skill_UndercoverOps.MABonus = 0;
+                //Skill_Surveilance.MABonus = 0;
+                TrustIntimidate_MABonus = 0;
+                //Per debuff = 0;
+                if (MA.total <= 2) {
+                    //Skill_Disguise.MABonus = -20;
+
+                    //Skill_Barter.MABonus = -50;
+                    //Skill_FindContraband.MABonus = -50;
+                    //Skill_Intelligence.MABonus = -50;
+                    //Skill_Interrogation.MABonus = -50;
+                    //Skill_Performance.MABonus = -50;
+                    //Skill_PubicSpeaking.MABonus = -50;
+                    //Skill_Seduction.MABonus = -50;
+                    //Skill_Sing.MABonus = -50;
+                } else if (MA.total <= 4) {
+                    //Skill_Barter.MABonus = -20;
+                    //Skill_Disguise.MABonus = -20;
+                    //Skill_FindContraband.MABonus = -20;
+                    //Skill_Intelligence.MABonus = -20;
+                    //Skill_Interrogation.MABonus = -20;***
+                    //Skill_Performance.MABonus = -20;
+                    //Skill_PubicSpeaking.MABonus = -20;
+                    //Skill_Sing.MABonus = -20;
+
+                    //Skill_Interrogation.MABonus = -30;***
+                    //Skill_Seduction.MABonus = -30;
+                } else if (MA.total <= 7) {
+                    //Skill_Barter.MABonus = -10;
+                    //Skill_FindContraband.MABonus = -10;
+                    //Skill_Intelligence.MABonus = -10;
+                    //Skill_Performance.MABonus = -10;
+                    //Skill_PubicSpeaking.MABonus = -10;
+                    //Skill_Seduction.MABonus = -10;
+                    //Skill_Sing.MABonus = -10;
+                    //Skill_Interrogation.MABonus = -20;
+
+                    //Skill_Gambling.MABonus = 5;
+                    //Skill_Prowl.MABonus = 5;
+                    //Skill_UndercoverOps.MABonus = 5;
+                    //Skill_Surveilance.MABonus = 5;
+                } else if (MA.total >= 16 && MA.total <=30) {
+                    if (MA.total <= 24) {
+                        TrustIntimidate_MABonus = ((MA.total-16)*5)+40;
+                    } else if (MA.total <= 27) {
+                        TrustIntimidate_MABonus = ((MA.total-25)*4)+84;
+                    } else if (MA.total <= 29) {
+                        TrustIntimidate_MABonus = ((MA.total-28)*2)+94;
+                    } else {
+                        TrustIntimidate_MABonus = MA.total + 67;
+                    }
+                } else if (MA.total > 30) {
+                    //Per debuff = 0-(Math.floor((MA.total - 30)/5));
+
+                    //Skill_FindContraband.MABonus = 5;
+                    //Skill_Gambling.MABonus = 5;
+                    //Skill_*IntelligenceGathering.MABonus = 5;
+                    //Skill_Seduction.MABonus = 5;
+                    //Skill_UndercoverOps.MABonus = 5;
+
+                    //Skill_Interrogation.MABonus = 10;
+                    //Skill_Performance.MABonus = 10;
+                    //Skill_PubicSpeaking.MABonus = 10;
+                    //Skill_Sing.MABonus = 10;
+                }
+            }
+
+            function PSBonus() {
+                // regular damage bonus from h2h, occ, or weapon
+                // punch: regular damage
+                // kick: regular damage
+                // melee weapons: regular damage
+                // throwing range 100%
+                // fire arrow range 100%
+                // lift/carry 100%
+                // restrained punch: regular damage
+                // power punch/kick: regular damage & attacks
+                // leap kick: regular damage & attacks
+
+                //body block & tackle: regular damage
+                //stomp: regular damage
+                //tear or pry: regular damage
+                H2HDamage_PSBonus = 0;
+                if (PS.total <= 2) {
+                    // no damage bonus from h2h, occ, or weapon
+                    // punch: 1 point damage
+                    // kick: 1d4
+                    // melee weapons: half damage
+                    // throwing range -75%
+                } else if (PS.total <= 4) {
+                    // no damage bonus from h2h, occ, or weapon
+                    // reduce damage by half: punches, kicks, melee weapons
+                    // throwing range -50%
+                } else if (PS.total <= 7) {
+                    // no damage bonus from h2h, occ, or weapon
+                    // throwing range -25%
+                } else if (PS.total >= 16) {
+                    H2HDamage_PSBonus = PS.total - 15;
+                    //Per debuff = (Math.floor((MA.total - 30)/5));
+                    //Per debuff = (Math.floor((MA.total - 30)/5));
+                }
+                if (PS.total >= 35) {
+                    //thrown weapon/fire arrow additional distance in feet without penalty = (Math.floor((MA.total - 30)/5))*30;
+                    //lift/carry % more than usual = (Math.floor((MA.total - 30)/5))*30;
+                }
+
+                if (PS_Type == "augmented") {
+                    if (PS.total == 24) {
+                        //power punch / power kick: 1MDC, 2 attacks
+                    } else if (PS.total >= 25 && PS.total <= 27) {
+                        //power punch / power kick: 1D$ MDC, 2 attacks
+                    } else if (PS.total >= 28 && PS.total <= 30) {
+                        //power punch / power kick: 1D6 MDC, 2 attacks
+                    } else if (PS.total >= 31 && PS.total <= 40) {
+                        //power punch / power kick: 2D4 MDC, 2 attacks
+                    } else if (PS.total >= 41 && PS.total <= 50) {
+                        // restrained punch: 3D6 SDC + ST damage
+                        // full punch: 1D4 MDC
+                        //power punch / power kick: 3D4 MDC (2 attacks?)
+                    } else if (PS.total >= 51) {
+                        // restrained punch: 4D6 SDC + ST damage
+                        // full punch: 1D8 MDC
+                        //power punch / power kick: 4D4 MDC (2 attacks?)
+                    }
+                }
+
+                if (PS_Type == "robot") {
+                    if (PS.total <= 15) {
+                        // restrained punch: 1d6 SDC
+                        // punch: 2d6 SDC
+                        // power punch: 4d6 SDC, 2 attacks
+                        // kick 2d6 SDC
+                        // leap kick 3d6 SDC
+                    } else if (PS.total >= 16 && PS.total <= 20) {
+                        // restrained punch: 2d6 SDC
+                        // punch: 1 MDC
+                        // power punch: 1d6 MDC, 2 attacks
+                        // kick 1d4 MDC
+                        // leap kick 2d4 MDC
+                    } else if (PS.total >= 21 && PS.total <= 25) {
+                        // restrained punch: 6d6 SDC
+                        // punch: 1D4 MDC
+                        // power punch: 2d4 MDC, 2 attacks
+                        // kick 1d6 MDC
+                        // leap kick 2d6 MDC, 2 attacks
+                    } else if (PS.total >= 26 && PS.total <= 30) {
+                        // restrained punch: 1D4 MDC
+                        // punch: 1D6 MDC
+                        // power punch: 2d6 MDC, 2 attacks
+                        // kick 2d4 MDC
+                        // leap kick 2d8 MDC, 2 attacks
+                    } else if (PS.total >= 31 && PS.total <= 35) {
+                        // restrained punch: 1D4 MDC
+                        // punch: 2d4 MDC
+                        // power punch: 4d4 MDC, 2 attacks
+                        // kick 2d8 MDC
+                        // leap kick 4d8 MDC, 2 attacks
+                    } else if (PS.total >= 36 && PS.total <= 40) {
+                        // restrained punch: 1D4 MDC
+                        // punch: 2D6 MDC
+                        // power punch: 4d6 MDC, 2 attacks
+                        // kick 3d8 MDC
+                        // leap kick 5d8 MDC, 2 attacks
+                    } else if (PS.total >= 41 && PS.total <= 50) {
+                        // restrained punch: 1D6 MDC
+                        // punch: 3D6 MDC
+                        // power punch: 1d6x10 MDC, 2 attacks
+                        // kick 5d8 MDC
+                        // leap kick 1d8x10 MDC, 2 attacks
+                    } else if (PS.total >= 51 && PS.total <= 60) {
+                        // restrained punch: 2d6 MDC
+                        // punch: 6D6 MDC
+                        // power punch: 2d6x10 MDC, 2 attacks
+                        // kick 6d8 MDC
+                        // leap kick 2d6x10 MDC, 2 attacks
+                    }
+                    //body block & tackle: half mdc of normal punch
+                    //stomp (if 18 ft or taller): 1d4 to 1d6 mdc
+                    //tear or pry: half mdc of full strength punch
+                }
+
+                if (PS_Type == "supernatural") {
+                    if (PS.total <= 15) {
+                        // restrained punch: 1d6 SDC
+                        // punch: 4d6 SDC
+                        // power punch: 1d4 mdc, 2 attacks
+                    } else if (PS.total >= 16 && PS.total <= 20) {
+                        // restrained punch: 3d6 SDC
+                        // punch: 1d6 mdc
+                        // power punch: 2s6 mdc, 2 attacks
+                    } else if (PS.total >= 21 && PS.total <= 25) {
+                        // restrained punch: 4d6 SDC
+                        // punch: 2d6 mdc
+                        // power punch: 4d6 mdc, 2 attacks
+                    } else if (PS.total >= 26 && PS.total <= 30) {
+                        // restrained punch: 5d6 SDC
+                        // punch: 3d6 mdc
+                        // power punch: 6d6 mdc, 2 attacks
+                    } else if (PS.total >= 31 && PS.total <= 35) {
+                        // restrained punch: 5d6 SDC
+                        // punch: 4d6 mdc
+                        // power punch: 1d4*10 mdc, 2 attacks
+                    } else if (PS.total >= 36 && PS.total <= 40) {
+                        // restrained punch: 6d6 SDC
+                        // punch: 5d6 mdc
+                        // power punch: 1d6*10 mdc, 2 attacks
+                    } else if (PS.total >= 41 && PS.total <= 50) {
+                        // restrained punch: 1d6*10 SDC
+                        // punch: 6d6 mdc
+                        // power punch: 2d4*10 mdc, 2 attacks
+                    } else if (PS.total >= 51 && PS.total <= 60) {
+                        // restrained punch: 1d6 mdc
+                        // punch: 1d6*10 mdc
+                        // power punch: 2d6*10 mdc, 2 attacks
+                    }
+                }
+            }
+
+            function PPBonus() {
+                Initiative_PPBonus = 0;
+                Parry_PPBonus = 0;
+                Dodge_PPBonus = 0;
+                Strike_PPBonus = 0;
+                Disarm_PPBonus = 0;
+                Entangle_PPBonus = 0;
+                Pull_PPBonus = 0;
+                Roll_PPBonus = 0;  
+                //on roll to strike 1-4: dont drop weapon
+                //doesnt drops held item when startled or fails save vs horror factor
+                //on dodge roll 1-4: doesnt trips and falls, lose initiative and 1 melee attack
+                //Skill_*Mechanics.PPBonus = 0;
+                //Skill_*Electronics.PPBonus = 0;
+                //Skill_Gymnastics.PPBonus = 0;
+                //Skill_Forgery.PPBonus = 0;
+                //Skill_PickPockets.PPBonus = 0;
+                //Skill_Palming.PPBonus = 0;
+                //Skill_Prowl.PPBonus = 0;
+                //Skill_Dance.PPBonus = 0;
+                //Skill_*Etc.PPBonus = 0;
+                //Skill_*ManualDexterity.PPBonus = 0;
+                //Skill_*Bycycle.PPBonus = 0;
+                //Skill_*Horse.PPBonus = 0;
+                //Skill_*Car.PPBonus = 0;
+                //Skill_Climbing.PPBonus = 0;
+                //Skill_Running.PPBonus = 0;
+                //Skill_Swimming.PPBonus = 0;
+                if (PP.total <= 2) {
+                    Initiative_PPBonus = -5;
+                    //Parry_PPBonus = *0;
+                    //Dodge_PPBonus = *0;
+                    //Strike_PPBonus = *0;
+                    //Disarm_PPBonus = *0;
+                    //Entangle_PPBonus = *0;
+                    //Pull_PPBonus = *0;
+                    //Roll_PPBonus = *0;
+                    
+                    //on roll to strike 1-4: drop weapon
+                    //drops held item when startled or fails save vs horror factor
+                    //on dodge roll 1-4: trips and falls, lose initiative and 1 melee attack
+
+                    //Skill_*Mechanics.PPBonus = *0;
+                    //Skill_*Electronics.PPBonus = *0;
+                    //Skill_Gymnastics.PPBonus = *0;
+                    //Skill_Forgery.PPBonus = *0;
+                    //Skill_PickPockets.PPBonus = *0;
+                    //Skill_Palming.PPBonus = *0;
+                    //Skill_Prowl.PPBonus = *0;
+                    //Skill_Dance.PPBonus = *0;
+                    //Skill_*Etc.PPBonus = *0;
+
+                    //Skill_*ManualDexterity.PPBonus = -20;
+                    //Skill_*Bycycle.PPBonus = -20;
+                    //Skill_*Horse.PPBonus = -20;
+                    //Skill_*Car.PPBonus = -20;
+                    //Skill_Climbing.PPBonus = -20;
+                    //Skill_Running.PPBonus = -20;
+                    //Skill_Swimming.PPBonus = -20;
+                } else if (PP.total <= 4) {
+                    Initiative_PPBonus = -3;
+                    //Parry_PPBonus = /2;
+                    //Dodge_PPBonus = /2;
+                    //Strike_PPBonus = /2;
+                    //Disarm_PPBonus = /2;
+                    //Entangle_PPBonus = /2;
+                    //Pull_PPBonus = /2;
+                    //Roll_PPBonus = /2;
+
+                    //Skill_*Mechanics.PPBonus = -25;
+                    //Skill_*Electronics.PPBonus = -25;
+                    //Skill_Gymnastics.PPBonus = -25;
+                    //Skill_Forgery.PPBonus = -25;
+                    //Skill_PickPockets.PPBonus = -25;
+                    //Skill_Palming.PPBonus = -25;
+                    //Skill_Prowl.PPBonus = -25;
+                    //Skill_Dance.PPBonus = -25;
+                    //Skill_*Etc.PPBonus = -25;
+
+                    //Skill_*ManualDexterity.PPBonus = -10;
+                } else if (PP.total <= 7) {
+                    Initiative_PPBonus = -1;
+                    Parry_PPBonus = -2;
+                    Dodge_PPBonus = -2;
+                    Strike_PPBonus = -2;
+                    Disarm_PPBonus = -2;
+                    Entangle_PPBonus = -2;
+                    Pull_PPBonus = -2;
+                    Roll_PPBonus = -2;
+
+                    //Skill_*Mechanics.PPBonus = -15;
+                    //Skill_*Electronics.PPBonus = -15;
+                    //Skill_Gymnastics.PPBonus = -15;
+                    //Skill_Forgery.PPBonus = -15;
+                    //Skill_PickPockets.PPBonus = -15;
+                    //Skill_Palming.PPBonus = -15;
+                    //Skill_Prowl.PPBonus = -15;
+                    //Skill_Dance.PPBonus = -15;
+                    //Skill_*Etc.PPBonus = -15;
+
+                    //Skill_*ManualDexterity.PPBonus = -5;
+                } else if (PP.total >= 16 && PP.total <= 30) {
+                    Parry_PPBonus = (Math.floor(PP.total / 2)) - 7;
+                    Dodge_PPBonus = (Math.floor(PP.total / 2)) - 7;
+                    Strike_PPBonus = (Math.floor(PP.total / 2)) - 7;
+                }
+                if (PP.total > 30) {
+                    Initiative_PPBonus = Math.ceil((IQ.total - 30)/3);
+                } else if (IQ.total >= 46) {
+                    Initiative_PPBonus = 6;
+                }
+            }
+
+            function PEBonus() {
+                SaveDisease_PEBonus = 0;
+                SavePoison_PEBonus = 0;
+                SaveMagic_PEBonus = 0;
+                SaveComaDeath_PEBonus = 0;
+                //fatigues at 100%
+                //100% damage and 200% penalties and duration from illness and side effects of drugs, poison or magic
+                //hypochondriac: 0% chance
+                //phobia about disease and germs: 0% chance
+                //not impervious to disease
+                SaveComaDeath_PEBonus = 0;
+                SaveMagic_PEBonus = 0;
+                SavePoison_PEBonus = 0;
+                SaveDisease_PEBonus = 0;
+                if (PE.total <= 2) {
+                    SaveDisease_PEBonus = -8;
+                    SavePoison_PEBonus = -6;
+                    SaveMagic_PEBonus = -5;
+                    SaveComaDeath_PEBonus = -30;
+                    //fatigues 75% faster
+                    //50% plus damage and double penalties and duration from illness and side effects of drugs, poison or magic
+                } else if (PE.total <= 4) {
+                    SaveDisease_PEBonus = -6;
+                    SavePoison_PEBonus = -5;
+                    SaveMagic_PEBonus = -4;
+                    SaveComaDeath_PEBonus = -10;
+                    //fatigues 50% faster
+                    //duration of illness & side effects from drugs and poisions: 25% longer
+                    //hypochondriac: 1-60% chance
+                    //phobia about disease and germs: 1-60% chance
+                } else if (PE.total <= 7) {
+                    SaveDisease_PEBonus = -2;
+                    SavePoison_PEBonus = -3;
+                    SaveMagic_PEBonus = -3;
+                    SaveComaDeath_PEBonus = -5;
+                    //fatigues 25% faster
+                } else if (PE.total >= 16 && PE.total <= 30) {
+                    if (PE.total <= 18) {
+                        SaveComaDeath_PEBonus = PE.total - 12;
+                    } else {
+                        SaveComaDeath_PEBonus = (((PE.total - 19) * 24)/12) + 8;
+                    }
+                    SaveMagic_PEBonus = (Math.floor(PE.total / 2)) - 7;
+                    SavePoison_PEBonus = (Math.floor(PE.total / 2)) - 7;
+                    SaveDisease_PEBonus = (Math.floor(PE.total / 2)) - 7;
+                } else if (PE.total >= 30) {
+                    SaveComaDeath_PEBonus = PE.total;
+                    //fatigues 50% slower
+                    //impervious to disease
+                }
+            }
+
+            function PBBonus() {
+                //Skill_*IntelligenceGathering.PBBonus = 0;
+                //Skill_Performance.PBBonus = 0;
+                //Skill_PublicSpeaking.PBBonus = 0;
+                //Skill_UndercoverOps.PBBonus = 0;
+                //Skill_Prowl.PBBonus = 0;
+                //Skill_Seduction.PBBonus = 0;
+                //Skill_Interrogation.PBBonus = 0;
+                //Skill_Gambling.PBBonus = 0;
+                Intimidate_PBBonus = 0;
+                HorrorFactor_PBBonus = 0;
+                CharmImpress_PBBonus = 0;
+                //Skill_Cardsharp.PBBonus = 0;
+                //Skill_Concealment.PBBonus = 0;
+                //Skill_Palming.PBBonus = 0;
+                //Skill_PickPockets.PBBonus = 0;
+                //Skill_Performance.PBBonus = 0;
+                if (PB.total <= 2) {
+                    //Skill_*IntelligenceGathering.PBBonus = -15;
+                    //Skill_Performance.PBBonus = -15;
+                    //Skill_PublicSpeaking.PBBonus = -15;
+                    //Skill_UndercoverOps.PBBonus = -15;
+                    //Skill_Prowl.PBBonus = -15;
+                    //Skill_Seduction.PBBonus = -40;
+
+                    //Skill_Interrogation.PBBonus = 15;
+                    //Skill_Gambling.PBBonus = 5;
+                    Intimidate_PBBonus = 20;
+                    HorrorFactor_PBBonus = rollDice(1,6,9);
+                } else if (PB.total <= 4) {
+                    //Skill_Gambling.PBBonus = -10;
+                    //Skill_*IntelligenceGathering.PBBonus = -10;
+                    //Skill_Performance.PBBonus = -10;
+                    //Skill_PublicSpeaking.PBBonus = -10;
+                    //Skill_UndercoverOps.PBBonus = -10;
+                    //Skill_Seduction.PBBonus = -30;
+
+                    //Skill_Interrogation.PBBonus = 10;
+                    Intimidate_PBBonus = 10;
+                } else if (PB.total <= 7) {
+                    //Skill_Gambling.PBBonus = -5;
+                    //Skill_*IntelligenceGathering.PBBonus = -5;
+                    //Skill_Performance.PBBonus = -5;
+                    //Skill_PublicSpeaking.PBBonus = -5;
+                    //Skill_UndercoverOps.PBBonus = -5;
+                    //Skill_Seduction.PBBonus = -20;
+
+                    //Skill_Interrogation.PBBonus = 5;
+                } else if (PB.total >= 16 && PB.total <= 30) {
+                    if (PB.total <= 26) {
+                        CharmImpress_PBBonus = ((PB.total-16)*5)+30;
+                    } else if (PB.total <= 28) {
+                        CharmImpress_PBBonus = ((PB.total-27)*3)+83;
+                    } else {
+                        CharmImpress_PBBonus = ((PB.total-29)*2)+90;
+                    }
+                } else if (PB.total > 30) {
+                    //Skill_Cardsharp.PBBonus = 5;
+                    //Skill_Concealment.PBBonus = 5;
+                    //Skill_Palming.PBBonus = 5;
+                    //Skill_PickPockets.PBBonus = 5;
+                    //Skill_Performance.PBBonus = 5;
+                    //Skill_PublicSpeaking.PBBonus = 5;
+                    //Skill_Seduction.PBBonus = 13;
+                    //Skill_Prowl.PBBonus = -10;
+                }
+            }
+
+            function SpdBonus() {
+                Initiative_SpdBonus = 0;
+                Dodge_SpdBonus = 0;
+                //Skill_Dance.SpdBonus = 0;
+                //Skill_Prowl.SpdBonus = 0;
+                //Skill_Palming.SpdBonus = 0;
+                //Skill_Track.SpdBonus = 0;
+                Per.SpdBonus = 0;
+                if (Spd.total <= 6) {
+                    Initiative_SpdBonus = -1;
+                    Dodge_SpdBonus = -1;
+                    //Skill_Dance.SpdBonus = 10;
+                    
+                    //Skill_Prowl.SpdBonus = 5;
+                    //Skill_Palming.SpdBonus = 5;
+                    //Skill_Track.SpdBonus = 5;
+                    Per.SpdBonus = 1;
+                }
+            }
+
+            function SpeedChart() {
+                Spd_mph = (((Spd.total - 5) * 196.5)/288)+3.5;
+                Spd_kph = Spd_mph * 1.60934;
+                Spd_ypmelee = Spd.total * 5;
+                Spd_ypminute = Spd.total * 20;
+                Spd_ypaction = Spd_ypmelee / Actions_Total;
+            }
+
+        </script>
+
+    </body>
+</html>
