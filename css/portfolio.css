@@ -1,0 +1,92 @@
+main {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    margin-top: 70px;
+    margin-bottom: 20px;
+    justify-content: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    z-index: 100;
+}
+
+main h1 {
+    width: 100%;
+    flex-basis: 100%;
+    margin-top: 10px;
+    font-size: 4rem;
+    text-align: center;
+}
+
+.index-portfolio-box {
+    width: 500px;;
+    height: 100px;
+    background-color: #000;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 20px;
+    transition: all ease-in-out 200ms;
+}
+
+.index-portfolio-box h3 {
+    color: #fff;
+    transition: all ease-in-out 200ms;
+}
+
+.index-portfolio-box:hover h3 {
+    color: rgb(255, 255, 155);
+    text-shadow: 1px 2px 0px #000;
+}
+
+.index-portfolio-box:nth-child(2) {
+    background-image: url(../img/3dmodeling.png);
+}
+
+.index-portfolio-box:nth-child(3) {
+    background-image: url(../img/animation.png);
+}
+
+.index-portfolio-box:nth-child(4) {
+    background-image: url(../img/curriculumdevelopment.png);
+}
+
+.index-portfolio-box:nth-child(5) {
+    background-image: url(../img/gamedevelopment.png);
+}
+
+.index-portfolio-box:nth-child(6) {
+    background-image: url(../img/graphicdesign.png);
+}
+
+.index-portfolio-box:nth-child(7) {
+    background-image: url(../img/illustration.png);
+}
+
+.index-portfolio-box:nth-child(8) {
+    background-image: url(../img/photography.png);
+}
+
+.index-portfolio-box:nth-child(9) {
+    background-image: url(../img/videoediting.png);
+}
+
+.index-portfolio-box:nth-child(10) {
+    background-image: url(../img/videoproduction.png);
+}
+
+.index-portfolio-box:nth-child(11) {
+    background-image: url(../img/writing.png);
+}
+
+@media only screen and (min-width: 768px) {
+
+    main {
+        margin-top: 110px;
+    }
+
+}

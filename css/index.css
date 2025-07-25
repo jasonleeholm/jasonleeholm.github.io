@@ -1,0 +1,232 @@
+main {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    margin-top: 70px;
+    margin-bottom: 20px;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    z-index: 100;
+}
+
+.main-img {
+    width: 100%;
+    flex-basis: 100%;
+}
+
+.main-quote {
+    width: 100%;
+    padding: 10px;
+    flex-basis: 100%;
+}
+
+main h1 {
+    margin-top: 10px;
+    font-size: 2.3rem;
+    text-align: center;
+    line-height: 2.5rem;
+}
+
+main .byline {
+    font-size: 1.5rem;
+}
+
+/* PORTFOLIO SECTION */
+
+.index-portfolio {
+    width: 100%;
+    padding: 20px 0;
+    background-color: #FFF;
+    background-image: linear-gradient(to bottom right,red, orange);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.index-portfolio h2 {
+    text-align: center;
+    padding-bottom: 20px;
+    flex-basis: 100%;
+    color: white;
+    text-shadow: 5px 3px 0px #000;
+}
+
+.index-portfolio-box {
+    width: 500px;
+    height: 100px;
+    background-color: #000;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 20px;
+    transition: all ease-in-out 200ms;
+}
+
+.index-portfolio-box h3 {
+    color: #fff;
+    transition: all ease-in-out 200ms;
+}
+
+.index-portfolio-box:hover h3 {
+    color: rgb(255, 255, 155);
+    text-shadow: 5px 3px 0px #000;
+}
+
+.index-portfolio-box:nth-child(2) {
+    background-image: url(../img/3dmodeling.png);
+}
+
+.index-portfolio-box:nth-child(3) {
+    background-image: url(../img/animation.png);
+}
+
+.index-portfolio-box:nth-child(4) {
+    background-image: url(../img/curriculumdevelopment.png);
+}
+
+.index-portfolio-box:nth-child(5) {
+    background-image: url(../img/gamedevelopment.png);
+}
+
+.index-portfolio-box:nth-child(6) {
+    background-image: url(../img/graphicdesign.png);
+}
+
+.index-portfolio-box:nth-child(7) {
+    background-image: url(../img/illustration.png);
+}
+
+.index-portfolio-box:nth-child(8) {
+    background-image: url(../img/photography.png);
+}
+
+.index-portfolio-box:nth-child(9) {
+    background-image: url(../img/videoediting.png);
+}
+
+.index-portfolio-box:nth-child(10) {
+    background-image: url(../img/videoproduction.png);
+}
+
+.index-portfolio-box:nth-child(11) {
+    background-image: url(../img/writing.png);
+}
+
+/* DOFTWARE SECTION */
+
+.index-software {
+    width: 100%;
+    padding: 20px 20px;
+    background-color: #FFF;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.index-software h2 {
+    text-align: center;
+    padding-bottom: 10px;
+    flex-basis: 100%;
+    color: #000;
+}
+
+.index-software li {
+    font-size: 2rem;
+    line-height: 3rem;
+    color: #000000;
+    font-family: 'Oswald', sans-serif;
+}
+
+.index-software strong {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+/* ABOUT SECTION */
+
+.index-about {
+    width: 100%;
+    padding: 20px 0;
+    background-color: #FFF;
+    background-image: linear-gradient(to bottom right,orange, yellow);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.index-about-img {
+    width: 100%;
+    flex-basis: 100%;
+}
+
+.index-about img {
+    width: 300px;
+    height: 300px;
+    border-radius: 300px;
+    object-fit: cover;
+    object-position: 0 0;
+}
+
+.index-about-text {
+    width: 100%;
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.index-about h2 {
+    text-align: center;
+    padding: 0 20px 0 10px;
+    flex-basis: 100%;
+    color: white;
+    text-shadow: 5px 3px 0px #000;
+}
+.index-about p {
+    width: 540px;
+    padding: 0 20px;
+    font-size: 2rem;
+    line-height: 2.5rem;
+}
+
+.index-about-links {
+    width: 100%;
+}
+
+.index-about-box {
+    width: 500px;
+    height: 100px;
+    background-color: #000;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 20px;
+    transition: all ease-in-out 200ms;
+}
+
+.index-about-box h3 {
+    color: #fff;
+    transition: all ease-in-out 200ms;
+}
+
+.index-about-box:hover h3 {
+    color: rgb(255, 255, 155);
+    text-shadow: 1px 2px 0px #000;
+}
+
+
+
+@media only screen and (min-width: 768px) {
+
+    main {
+        margin-top: 110px;
+    }
+
+}

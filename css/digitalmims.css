@@ -1,0 +1,173 @@
+main {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    margin-top: 70px;
+    margin-bottom: 20px;
+    justify-content: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    z-index: 100;
+}
+
+main h1 {
+    width: 100%;
+    flex-basis: 100%;
+    margin-top: 10px;
+    font-size: 4rem;
+    text-align: center;
+}
+
+.index-portfolio-box {
+    /*width: 500px;
+    height: 100px;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 20px;
+    border: 2px solid blue;
+}
+
+
+section {
+    margin: 0 auto;
+    padding: 0 20px;
+    max-width: 800px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.subnav {
+    padding: 0;
+}
+
+.subnav ul {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+}
+
+.subnav a {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    line-height: 2.7rem;
+    color: #000;
+    display: block;
+    height: 100%;
+    transition: all ease-in-out 200ms;
+    text-decoration: underline;
+    text-align: center;
+}
+
+.subnav a:hover {
+    color: red;
+}
+
+.anchor {
+    display:block;
+    padding-top:100px;
+    margin-top:-100px;
+ }
+
+h2, h2 a {
+    width: 100%;
+    flex-basis: 100%;
+    margin-top: 10px;
+    font-size: 3rem;
+    text-align: center;
+    text-transform: none;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+section h4 {
+    font-family: 'Oswald', sans-serif;
+    width: 100%;
+    flex-basis: 100%;
+    font-size: 3rem;
+    text-align: center;
+    text-transform: none;
+}
+
+h2 a {
+    text-decoration: underline;
+}
+
+h3 {
+    font-size: 3rem;
+}
+
+main p, section p {
+    width: 100%;
+    flex-basis: 100%;
+    font-size: 2rem;
+    line-height: 2.4rem;
+    margin-bottom: 20px;
+}
+
+main p {
+    width: 600px;
+    flex-basis:auto;
+}
+
+.centered {
+    text-align: center;
+}
+
+section img {
+    max-height: calc(100vh - 140px);
+    margin-bottom: 20px;
+}
+
+.collapsed {
+    width: 100%;
+    height: 0;
+}
+
+iframe {
+    margin: 20px;
+}
+
+.backtotop {
+    text-align: center;
+    flex-basis: 100%;
+    font-size: 2rem;
+    text-decoration: underline;
+    transition: all ease-in-out 200ms;
+    margin-bottom: 20px;
+}
+
+.backtotop:hover {
+    color: red;
+}
+
+.centerlink {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+}
+
+.centerlink p {
+    text-decoration: underline;
+    color: blue;
+}
+
+.centerlink p:hover {
+    color: red;
+}
+
+@media only screen and (min-width: 768px) {
+
+    main {
+        margin-top: 110px;
+    }
+
+}

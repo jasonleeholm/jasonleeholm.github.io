@@ -1,0 +1,139 @@
+main {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    margin-top: 70px;
+    margin-bottom: 20px;
+    justify-content: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    z-index: 100;
+}
+
+main h1 {
+    width: 100%;
+    flex-basis: 100%;
+    margin-top: 10px;
+    font-size: 4rem;
+    text-align: center;
+}
+
+section {
+    margin: 0 auto;
+    padding: 0 20px;
+    max-width: 800px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.subnav {
+    padding: 0;
+}
+
+.subnav ul {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+}
+
+.subnav a {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    line-height: 2.7rem;
+    color: #000;
+    display: block;
+    height: 100%;
+    transition: all ease-in-out 200ms;
+    text-decoration: underline;
+    text-align: center;
+}
+
+.subnav a:hover {
+    color: red;
+}
+
+.anchor {
+    display:block;
+    padding-top:100px;
+    margin-top:-100px;
+ }
+
+h2 {
+    width: 100%;
+    flex-basis: 100%;
+    margin-top: 10px;
+    font-size: 3rem;
+    text-align: center;
+    text-transform: none;
+}
+
+h3 {
+    font-size: 3rem;
+}
+
+section p {
+    width: 100%;
+    flex-basis: 100%;
+    font-size: 2rem;
+    line-height: 2.4rem;
+    margin-bottom: 20px;
+}
+
+img {
+    max-height: calc(100vh - 140px);
+    margin-bottom: 20px;
+}
+
+iframe {
+    margin: 20px;
+}
+
+.backtotop {
+    text-align: center;
+    flex-basis: 100%;
+    font-size: 2rem;
+    text-decoration: underline;
+    transition: all ease-in-out 200ms;
+    margin-bottom: 20px;
+}
+
+.backtotop:hover {
+    color: red;
+}
+
+.category {
+    /*background-image: linear-gradient(red,yellow);*/
+    max-width: none;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;;
+}
+
+.category .barleft {
+    height: 5px;
+    flex-grow: 1;
+    background-image: linear-gradient(to right,yellow,red);
+}
+
+.category .barright {
+    height: 5px;
+    flex-grow: 1;
+    background-image: linear-gradient(to right, red, yellow);
+}
+
+.category h3 {
+    margin: 0 20px;
+}
+
+@media only screen and (min-width: 768px) {
+
+    main {
+        margin-top: 110px;
+    }
+
+}

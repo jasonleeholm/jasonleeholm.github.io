@@ -1,0 +1,40 @@
+main {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    margin-top: 70px;
+    margin-bottom: 20px;
+    justify-content: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    z-index: 100;
+}
+
+main h1 {
+    width: 100%;
+    flex-basis: 100%;
+    margin-top: 10px;
+    font-size: 4rem;
+    text-align: center;
+}
+
+.index-software li {
+    font-size: 2rem;
+    line-height: 3rem;
+    color: #000000;
+    font-family: 'Oswald', sans-serif;
+}
+
+.index-software strong {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+@media only screen and (min-width: 768px) {
+
+    main {
+        margin-top: 110px;
+    }
+
+}
