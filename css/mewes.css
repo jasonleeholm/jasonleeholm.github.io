@@ -15,6 +15,7 @@ main h1 {
     width: 100%;
     flex-basis: 100%;
     margin-top: 10px;
+    margin-bottom: 0px;
     font-size: 4rem;
     text-align: center;
 }
@@ -76,7 +77,7 @@ section {
 h2, h2 a {
     width: 100%;
     flex-basis: 100%;
-    margin-top: 10px;
+    margin-top: 0px;
     font-size: 3rem;
     text-align: center;
     text-transform: none;

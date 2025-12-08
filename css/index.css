@@ -116,7 +116,26 @@ main .byline {
     background-image: url(../img/writing.png);
 }
 
-/* DOFTWARE SECTION */
+.index-portfolio-box2 {
+    /*width: 500px;
+    height: 100px;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 20px;
+    border: 2px solid blue;
+}
+
+.break {
+    width: 100%; /* Forces the next item onto a new line */
+    /* Optional: collapse the break element's height and margin for a seamless break */
+    height: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+/* SOFTWARE SECTION */
 
 .index-software {
     width: 100%;
@@ -221,7 +240,18 @@ main .byline {
     text-shadow: 1px 2px 0px #000;
 }
 
+.backtotop {
+    text-align: center;
+    flex-basis: 100%;
+    font-size: 2rem;
+    text-decoration: underline;
+    transition: all ease-in-out 200ms;
+    margin-bottom: 20px;
+}
 
+.backtotop:hover {
+    color: rgb(255, 255, 155);
+}
 
 @media only screen and (min-width: 768px) {
 
