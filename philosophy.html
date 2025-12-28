@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ultimate Philosophy Quiz</title>
+    <style>
+        :root { --primary: #2c3e50; --accent: #3498db; --bg: #f4f7f6; --text: #333; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: var(--text); max-width: 900px; margin: 0 auto; padding: 20px; background-color: var(--bg); }
+        .card { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-top: 20px; transition: opacity 0.3s; }
+        .question-text { font-size: 1.5em; font-weight: 600; margin-bottom: 30px; color: var(--primary); text-align: center; }
+        .options { display: grid; gap: 12px; }
+        button.opt { padding: 18px; font-size: 1.1em; border: 2px solid #eee; border-radius: 10px; cursor: pointer; transition: all 0.2s; background: white; font-weight: 500; }
+        button.opt:hover { background: #f8f9fa; border-color: var(--accent); transform: translateY(-2px); }
+        #progress-container { margin-bottom: 20px; }
+        .progress-text { font-weight: bold; color: #7f8c8d; margin-bottom: 8px; display: block; }
+        .progress-bar { height: 10px; background: #dfe6e9; border-radius: 5px; overflow: hidden; }
+        .progress-fill { height: 100%; background: var(--accent); width: 0%; transition: width 0.4s ease; }
+        .tag { font-size: 0.85em; text-transform: uppercase; letter-spacing: 1px; padding: 5px 12px; border-radius: 20px; background: #eef2f3; color: #555; margin-bottom: 15px; display: inline-block; }
+        #results { display: none; }
+        table { width: 100%; border-collapse: collapse; margin-top: 30px; background: white; border-radius: 10px; overflow: hidden; }
+        th, td { text-align: left; padding: 15px; border-bottom: 1px solid #eee; }
+        th { background-color: var(--primary); color: white; }
+        .rank-high { font-weight: bold; color: #27ae60; }
+        .score-box { display: flex; align-items: center; gap: 10px; }
+        .mini-bar { height: 8px; background: var(--accent); border-radius: 4px; }
+        .hidden { display: none; }
+        .intro { text-align: center; }
+        .btn-main { background: var(--accent); color: white; border: none; padding: 15px 30px; border-radius: 8px; font-size: 1.2em; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <div id="intro" class="card intro">
+        <h1>Philosophical Alignment Test</h1>
+        <p>This quiz analyzes your worldview across 50 major philosophies by evaluating your stance on 60 fundamental questions regarding reality, knowledge, and ethics.</p>
+        <button class="btn-main" onclick="startQuiz()">Begin the Analysis</button>
+    </div>
+
+    <div id="quiz-container" class="hidden">
+        <div id="progress-container">
+            <span class="progress-text" id="progress-label">Question 1 of 60</span>
+            <div class="progress-bar"><div id="fill" class="progress-fill"></div></div>
+        </div>
+        
+        <div class="card">
+            <div id="category" class="tag">Loading...</div>
+            <div id="question" class="question-text">Question goes here?</div>
+            <div class="options">
+                <button class="opt" onclick="handleAnswer(1.0)">Strongly Agree</button>
+                <button class="opt" onclick="handleAnswer(0.5)">Agree</button>
+                <button class="opt" onclick="handleAnswer(0)">Neutral / Uncertain</button>
+                <button class="opt" onclick="handleAnswer(-0.5)">Disagree</button>
+                <button class="opt" onclick="handleAnswer(-1.0)">Strongly Disagree</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="results" class="card">
+        <h2 style="text-align:center">Your Philosophical Profile</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Philosophy</th>
+                    <th>Match %</th>
+                    <th>Strength</th>
+                </tr>
+            </thead>
+            <tbody id="results-body"></tbody>
+        </table>
+        <div style="text-align: center; margin-top: 30px;">
+            <button class="btn-main" onclick="location.reload()">Reset Test</button>
+        </div>
+    </div>
+
+<script>
+    const questions = [
+        // CATEGORY A: REALITY / ONTOLOGY
+        { q: "The physical world is the only thing that truly exists.", cat: "Reality", mods: { "Materialism": 4, "Naturalism": 3, "Reductionism": 2, "Idealism": -4, "Platonism": -3, "Panpsychism": -2 } },
+        { q: "Mathematical truths exist in a realm outside of time and space.", cat: "Reality", mods: { "Platonism": 4, "Realism": 2, "Materialism": -3, "Nominalism": -4 } },
+        { q: "All living things possess a level of consciousness or 'soul'.", cat: "Reality", mods: { "Hylozoism": 4, "Panpsychism": 4, "Biocentrism": 3, "Materialism": -4, "Naturalism": -2 } },
+        { q: "Reality is a mental construct; there is no world outside the mind.", cat: "Reality", mods: { "Idealism": 4, "Subjectivism": 3, "Solipsism": 2, "Realism": -4, "Materialism": -4 } },
+        { q: "Categories like 'human' or 'red' are just names, not real entities.", cat: "Reality", mods: { "Nominalism": 4, "Platonism": -4, "Realism": -2 } },
+        { q: "The laws of nature are the ultimate authority on reality.", cat: "Reality", mods: { "Naturalism": 4, "Scientism": 3, "Materialism": 3, "Transcendentalism": -3 } },
+        { q: "Life is the central fact of the universe and determines its nature.", cat: "Reality", mods: { "Biocentrism": 4, "Hylozoism": 2, "Materialism": -2 } },
+        { q: "Matter is fundamentally alive or contains the seeds of life.", cat: "Reality", mods: { "Hylozoism": 4, "Panpsychism": 3, "Reductionism": -3 } },
+        { q: "Universal truths exist independently of human observation.", cat: "Reality", mods: { "Realism": 4, "Platonism": 3, "Relativism": -4, "Perspectivism": -3 } },
+        { q: "The universe is an interconnected whole; parts cannot exist alone.", cat: "Reality", mods: { "Hegelian": 3, "Coherentism": 2, "Reductionism": -4 } },
+
+        // CATEGORY B: KNOWLEDGE / JUSTIFICATION
+        { q: "Knowledge is only valid if verified through the five senses.", cat: "Knowledge", mods: { "Empiricism": 4, "Positivism": 3, "Rationalism": -4, "Transcendentalism": -3 } },
+        { q: "Reason and logic are the only reliable paths to truth.", cat: "Knowledge", mods: { "Rationalism": 4, "Cognitivism": 2, "Empiricism": -2, "Emotivism": -3 } },
+        { q: "Science is the only tool we have to truly understand the world.", cat: "Knowledge", mods: { "Scientism": 4, "Positivism": 4, "Skepticism": -2, "Idealism": -3 } },
+        { q: "We can never truly be certain of any knowledge.", cat: "Knowledge", mods: { "Skepticism": 4, "Nihilism": 2, "Foundationalism": -4, "Positivism": -3 } },
+        { q: "Knowledge must be built on a set of indubitable truths.", cat: "Knowledge", mods: { "Foundationalism": 4, "Rationalism": 2, "Coherentism": -4, "Skepticism": -2 } },
+        { q: "Truth is a web of beliefs that must be consistent together.", cat: "Knowledge", mods: { "Coherentism": 4, "Pragmatism": 2, "Foundationalism": -4 } },
+        { q: "The value of an idea lies purely in its practical application.", cat: "Knowledge", mods: { "Pragmatism": 4, "Scientism": 2, "Platonism": -3 } },
+        { q: "Structures in the human mind shape all possible experience.", cat: "Knowledge", mods: { "Transcendentalism": 4, "Kantian": 3, "Empiricism": -3 } },
+        { q: "Moral statements describe objective facts about the world.", cat: "Knowledge", mods: { "Cognitivism": 4, "Moralism": 3, "Emotivism": -4, "Expressivism": -4 } },
+        { q: "It is impossible to know anything about 'things-in-themselves'.", cat: "Knowledge", mods: { "Kantian": 4, "Skepticism": 3, "Realism": -3 } },
+
+        // CATEGORY C: MEANING & EXISTENCE
+        { q: "Life has no inherent meaning or value.", cat: "Meaning", mods: { "Nihilism": 4, "Absurdism": 3, "Optimism": -4, "Prometheanism": -3 } },
+        { q: "We must create our own meaning in an indifferent world.", cat: "Meaning", mods: { "Existentialism": 4, "Nietzschean": 3, "Nihilism": -2, "Fatalism": -3 } },
+        { q: "Humanity should use will and technology to transcend its limits.", cat: "Meaning", mods: { "Prometheanism": 4, "Nietzschean": 2, "Stoicism": -2, "Pessimism": -3 } },
+        { q: "The universe is fundamentally irrational; searching for meaning is futile.", cat: "Meaning", mods: { "Absurdism": 4, "Existentialism": 2, "Rationalism": -3 } },
+        { q: "Life is a constant struggle for power and self-overcoming.", cat: "Meaning", mods: { "Nietzschean": 4, "Egoism": 2, "Utilitarianism": -3 } },
+        { q: "Society is corrupt; one should live simply according to nature.", cat: "Meaning", mods: { "Cynicism": 4, "Stoicism": 2, "Structuralism": -2 } },
+        { q: "Human progress is inevitable and the future will be better.", cat: "Meaning", mods: { "Optimism": 4, "Hegelian": 2, "Pessimism": -4 } },
+        { q: "Suffering is an inescapable and defining feature of existence.", cat: "Meaning", mods: { "Pessimism": 4, "Nihilism": 2, "Optimism": -4, "Epicureanism": -3 } },
+        { q: "Our choices define our essence; we are truly free.", cat: "Meaning", mods: { "Existentialism": 4, "Determinism": -4, "Fatalism": -4 } },
+        { q: "The pursuit of greatness matters more than the pursuit of happiness.", cat: "Meaning", mods: { "Nietzschean": 4, "Prometheanism": 3, "Hedonism": -3, "Utilitarianism": -2 } },
+
+        // CATEGORY D: ETHICS & VALUE
+        { q: "Actions are right if they produce the most happiness for most people.", cat: "Ethics", mods: { "Utilitarianism": 4, "Consequentialism": 4, "Egoism": -4, "Kantian": -3 } },
+        { q: "Morality should be based on universal duties, regardless of results.", cat: "Ethics", mods: { "Kantian": 4, "Absolutism": 3, "Consequentialism": -4, "Relativism": -4 } },
+        { q: "Pleasure is the highest good; avoiding pain is the goal of life.", cat: "Ethics", mods: { "Hedonism": 4, "Epicureanism": 4, "Stoicism": -3, "Moralism": -3 } },
+        { q: "The only real moral obligation is to look after one's own interest.", cat: "Ethics", mods: { "Egoism": 4, "Utilitarianism": -4, "Universalism": -4 } },
+        { q: "There are absolute moral truths that never change.", cat: "Ethics", mods: { "Absolutism": 4, "Universalism": 3, "Moralism": 3, "Relativism": -4, "Perspectivism": -3 } },
+        { q: "What is 'right' depends entirely on culture or context.", cat: "Ethics", mods: { "Relativism": 4, "Perspectivism": 3, "Absolutism": -4, "Universalism": -4 } },
+        { q: "We should focus on what we can control and ignore the rest.", cat: "Ethics", mods: { "Stoicism": 4, "Epicureanism": 2, "Hedonism": -2 } },
+        { q: "Evil is a real, objective force that must be actively combated.", cat: "Ethics", mods: { "Moralism": 4, "Absolutism": 2, "Nihilism": -4, "Relativism": -3 } },
+        { q: "All people deserve equal moral consideration regardless of status.", cat: "Ethics", mods: { "Universalism": 4, "Utilitarianism": 2, "Egoism": -4, "Nietzschean": -3 } },
+        { q: "The ends justify the means in pursuit of a greater good.", cat: "Ethics", mods: { "Consequentialism": 4, "Utilitarianism": 3, "Kantian": -4 } },
+
+        // CATEGORY E: MIND, EXPRESSION, PERSPECTIVE
+        { q: "Moral judgments are just expressions of our own feelings.", cat: "Mind", mods: { "Emotivism": 4, "Expressivism": 4, "Cognitivism": -4, "Objectivism": -4 } },
+        { q: "Only my own mind is certain to exist.", cat: "Mind", mods: { "Solipsism": 4, "Subjectivism": 3, "Realism": -4, "Universalism": -2 } },
+        { q: "Truth is a perspective based on one's position in the world.", cat: "Mind", mods: { "Perspectivism": 4, "Subjectivism": 3, "Objectivism": -4, "Realism": -3 } },
+        { q: "Values like beauty and goodness exist as objective facts.", cat: "Mind", mods: { "Objectivism": 4, "Realism": 2, "Subjectivism": -4, "Emotivism": -4 } },
+        { q: "Personal experience is the only valid source of truth.", cat: "Mind", mods: { "Subjectivism": 4, "Solipsism": 2, "Scientism": -3, "Positivism": -3 } },
+        { q: "Language is used to express attitudes, not to state facts.", cat: "Mind", mods: { "Expressivism": 4, "Emotivism": 3, "Cognitivism": -4 } },
+        { q: "An objective reality exists whether humans observe it or not.", cat: "Mind", mods: { "Objectivism": 4, "Realism": 4, "Subjectivism": -4, "Solipsism": -4 } },
+        { q: "The 'self' is just a collection of various perspectives.", cat: "Mind", mods: { "Perspectivism": 4, "Structuralism": 2, "Existentialism": -2 } },
+        { q: "I cannot know for sure if other people have conscious minds.", cat: "Mind", mods: { "Solipsism": 4, "Skepticism": 3, "Biocentrism": -2 } },
+        { q: "The meaning of a word is defined solely by how people use it.", cat: "Mind", mods: { "Expressivism": 4, "Structuralism": 3, "Platonism": -3 } },
+
+        // CATEGORY F: CAUSATION & STRUCTURE
+        { q: "Every event is caused by previous events; free will is an illusion.", cat: "Causation", mods: { "Determinism": 4, "Fatalism": 3, "Existentialism": -4 } },
+        { q: "Our lives are governed by an unchangeable destiny.", cat: "Causation", mods: { "Fatalism": 4, "Determinism": 2, "Existentialism": -4, "Prometheanism": -3 } },
+        { q: "New properties arise in complex systems that parts alone don't have.", cat: "Causation", mods: { "Emergentism": 4, "Reductionism": -4 } },
+        { q: "Everything in the universe can be explained by its smallest parts.", cat: "Causation", mods: { "Reductionism": 4, "Materialism": 3, "Emergentism": -4, "Hylozoism": -2 } },
+        { q: "Human behavior is determined by social and linguistic structures.", cat: "Causation", mods: { "Structuralism": 4, "Determinism": 2, "Existentialism": -3 } },
+        { q: "History moves in a predictable pattern of conflict and resolution.", cat: "Causation", mods: { "Hegelian": 4, "Determinism": 2, "Nihilism": -2 } },
+        { q: "The whole is nothing more than the sum of its components.", cat: "Causation", mods: { "Reductionism": 4, "Emergentism": -4 } },
+        { q: "Individual agency is an illusion created by social forces.", cat: "Causation", mods: { "Determinism": 4, "Structuralism": 3, "Existentialism": -4, "Nietzschean": -3 } },
+        { q: "Change is constant and driven by the clash of opposites.", cat: "Causation", mods: { "Hegelian": 4, "Perspectivism": 2, "Stoicism": -2 } },
+        { q: "Mind and consciousness are just byproducts of physical matter.", cat: "Causation", mods: { "Reductionism": 4, "Materialism": 4, "Emergentism": -3, "Panpsychism": -3 } }
+    ];
+
+    let currentIdx = 0;
+    let scores = {};
+    let maxScores = {};
+
+    function startQuiz() {
+        document.getElementById('intro').classList.add('hidden');
+        document.getElementById('quiz-container').classList.remove('hidden');
+        init();
+    }
+
+    function init() {
+        questions.forEach(q => {
+            for (let phil in q.mods) {
+                scores[phil] = 0;
+                maxScores[phil] = (maxScores[phil] || 0) + Math.abs(q.mods[phil]);
+            }
+        });
+        showQuestion();
+    }
+
+    function showQuestion() {
+        const q = questions[currentIdx];
+        document.getElementById("progress-label").innerText = `Question ${currentIdx + 1} of ${questions.length}`;
+        document.getElementById("fill").style.width = `${((currentIdx) / questions.length) * 100}%`;
+        document.getElementById("category").innerText = q.cat;
+        document.getElementById("question").innerText = q.q;
+    }
+
+    function handleAnswer(weight) {
+        const mods = questions[currentIdx].mods;
+        for (let phil in mods) {
+            scores[phil] += (weight * mods[phil]);
+        }
+        currentIdx++;
+        if (currentIdx < questions.length) {
+            showQuestion();
+        } else {
+            showResults();
+        }
+    }
+
+    function showResults() {
+        document.getElementById("quiz-container").style.display = "none";
+        document.getElementById("results").style.display = "block";
+        const resultsBody = document.getElementById("results-body");
+        
+        let final = [];
+        for (let phil in scores) {
+            let percentage = ((scores[phil] + maxScores[phil]) / (2 * maxScores[phil])) * 100;
+            final.push({ name: phil, score: percentage });
+        }
+
+        final.sort((a, b) => b.score - a.score);
+
+        final.forEach(item => {
+            const row = `<tr>
+                <td class="${item.score > 70 ? 'rank-high' : ''}">${item.name}</td>
+                <td>${item.score.toFixed(1)}%</td>
+                <td>
+                    <div class="score-box">
+                        <div class="mini-bar" style="width: ${item.score}%"></div>
+                    </div>
+                </td>
+            </tr>`;
+            resultsBody.innerHTML += row;
+        });
+    }
+</script>
+</body>
+</html>
