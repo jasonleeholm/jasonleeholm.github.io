@@ -90,12 +90,17 @@ h3 {
     font-size: 3rem;
 }
 
-section p {
+main p, section p {
     width: 100%;
     flex-basis: 100%;
     font-size: 2rem;
     line-height: 2.4rem;
     margin-bottom: 20px;
+}
+
+main p {
+    width: 600px;
+    flex-basis:auto;
 }
 
 .centered {
