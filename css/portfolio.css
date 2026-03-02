@@ -79,18 +79,22 @@ main h1 {
 }
 
 .index-portfolio-box:nth-child(8) {
-    background-image: url(../img/photography.png);
+    background-image: url(../img/music.png);
 }
 
 .index-portfolio-box:nth-child(9) {
-    background-image: url(../img/videoediting.png);
+    background-image: url(../img/photography.png);
 }
 
 .index-portfolio-box:nth-child(10) {
-    background-image: url(../img/videoproduction.png);
+    background-image: url(../img/videoediting.png);
 }
 
 .index-portfolio-box:nth-child(11) {
+    background-image: url(../img/videoproduction.png);
+}
+
+.index-portfolio-box:nth-child(12) {
     background-image: url(../img/writing.png);
 }
 
@@ -120,5 +124,6 @@ main h1 {
     main {
         margin-top: 110px;
     }
+
 
 }
