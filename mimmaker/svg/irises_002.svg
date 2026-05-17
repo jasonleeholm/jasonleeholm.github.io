@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+  <g id="irises">
+    <g id="irises_002">
+      <rect width="1000" height="1000" fill="#fff" opacity="0"/>
+      <g>
+        <circle cx="398.91" cy="410.74" r="21.96" fill="#999" stroke="#000" stroke-miterlimit="10" stroke-width="3"/>
+        <circle cx="398.91" cy="410.74" r="10.86" stroke="#000" stroke-miterlimit="10" stroke-width="3"/>
+        <circle cx="405.91" cy="402.74" r="6.6" fill="#fff"/>
+      </g>
+      <g>
+        <circle cx="551.33" cy="410.74" r="21.96" fill="#999" stroke="#000" stroke-miterlimit="10" stroke-width="3"/>
+        <circle cx="551.33" cy="410.74" r="10.86" stroke="#000" stroke-miterlimit="10" stroke-width="3"/>
+        <circle cx="558.33" cy="402.74" r="6.6" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>

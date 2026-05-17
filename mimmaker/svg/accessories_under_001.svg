@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+  <g id="accessories_under">
+    <g id="accessories_under_001">
+      <rect width="1000" height="1000" fill="#fff" opacity="0"/>
+      <ellipse cx="350.05" cy="425.1" rx="81.09" ry="102.58" transform="translate(-71.19 70.41) rotate(-10.43)" fill="#999" stroke="#000" stroke-miterlimit="10" stroke-width="3"/>
+      <ellipse cx="370.22" cy="450.42" rx="41.91" ry="53.01" transform="translate(-75.44 74.48) rotate(-10.43)" fill="#ccc" stroke="#000" stroke-miterlimit="10" stroke-width="3"/>
+    </g>
+  </g>
+</svg>

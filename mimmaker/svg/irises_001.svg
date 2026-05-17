@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+  <g id="irises">
+    <g id="irises_001">
+      <rect width="1000" height="1000" fill="#fff" opacity="0"/>
+      <g>
+        <ellipse cx="406.23" cy="420.76" rx="12.6" ry="22.03" transform="translate(-36.39 38.46) rotate(-5.19)" fill="#999" stroke="#000" stroke-miterlimit="10" stroke-width="3"/>
+        <ellipse cx="406.26" cy="420.75" rx="6.3" ry="11.02" transform="translate(-36.39 38.47) rotate(-5.19)"/>
+        <circle cx="410.32" cy="414.67" r="5.74" fill="#fff"/>
+      </g>
+      <g>
+        <ellipse cx="533.3" cy="418.32" rx="15.7" ry="23.36" transform="translate(-5.94 7.69) rotate(-.82)" fill="#999" stroke="#000" stroke-miterlimit="10" stroke-width="3"/>
+        <ellipse cx="533.34" cy="418.3" rx="7.85" ry="11.68" transform="translate(-5.94 7.69) rotate(-.82)"/>
+        <circle cx="539.85" cy="410.7" r="5.74" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>

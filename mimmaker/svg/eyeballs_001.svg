@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+  <g id="eyeballs">
+    <g id="eyeballs_001">
+      <rect width="1000" height="1000" fill="#fff" opacity="0"/>
+      <path d="M568.83,410.43c.29,20.13-7.54,33.79-32.02,32.33-16.56-.99-23.44-10.47-23.73-30.61s15.01-43.11,29.11-42.4,26.34,20.54,26.63,40.68Z" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width="3"/>
+      <path d="M422.96,412.02c1.75,19.29-3.48,32.84-23.17,32.88-13.32.03-19.54-8.66-21.29-27.95-1.75-19.29,8.75-42.22,20.09-42.37,11.87-.15,22.62,18.15,24.38,37.44Z" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width="3"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mim Maker</title>
+<link rel="stylesheet" href="maker.css">
+</head>
+<body>
+
+<!-- Loading overlay -->
+<div id="loading-overlay">
+  <div id="loading-msg">Discovering SVG files&hellip;</div>
+</div>
+
+<header>
+  <h1>CHARACTER CREATOR</h1>
+  <p>Use arrows to cycle layer options &bull; pick a base color &bull; share combos via the status bar</p>
+</header>
+
+<div id="alert-area"></div>
+
+<div class="stage">
+  <!-- Preview + palette -->
+  <div class="preview-col">
+    <div class="canvas-wrap" id="canvas-wrap"></div>
+
+    <div class="palette-section">
+      <div class="palette-row">
+        <label>base</label>
+        <input type="color" id="col-base">
+        <div class="swatch" id="sw-base"></div>
+        <span class="hex-label" id="hex-base"></span>
+      </div>
+      <div class="palette-row">
+        <label>shade</label>
+        <input type="color" id="col-shade">
+        <div class="swatch" id="sw-shade"></div>
+        <span class="hex-label" id="hex-shade"></span>
+      </div>
+      <div class="palette-row">
+        <label>tint</label>
+        <input type="color" id="col-tint">
+        <div class="swatch" id="sw-tint"></div>
+        <span class="hex-label" id="hex-tint"></span>
+      </div>
+      <div class="palette-actions">
+        <button class="btn-outline btn-sm" onclick="autoTintShade()">&#8635; auto tint/shade</button>
+        <button class="btn-outline btn-sm" onclick="randomBase()">&#9906; random color</button>
+        <button class="btn-dark btn-sm" onclick="saveImage()">&#8681; save SVG</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Layer controls -->
+  <div class="controls-col" id="controls-col"></div>
+</div>
+
+<!-- Status bar -->
+<div class="statusbar">
+  <span class="status-text" id="status-text">&mdash;</span>
+  <div class="statusbar-actions">
+    <button class="btn-outline btn-sm btn-mono" onclick="copyStatus()" title="Copy status string">&#9112; copy</button>
+    <button class="btn-outline btn-sm btn-mono" onclick="pasteStatus()" title="Paste &amp; apply status string">&#9096; paste</button>
+    <button class="btn-dark btn-sm btn-mono" onclick="applyPasted()" title="Apply pasted status">apply</button>
+  </div>
+</div>
+
+<!-- Config loaded from layers.js -->
+<script src="layers.js"></script>
+<script src="maker.js"></script>
+
+</body>
+<script>
+  boot();
+</script>
+</html>
