@@ -68,9 +68,9 @@ async function copyPrompt() {
     try {
         await navigator.clipboard.writeText(currentPrompt);
         const button = document.getElementById("copyPromptBtn");
-        button.textContent = "Copied!";
+        button.textContent = "COPIED!";
         setTimeout(() => {
-            button.textContent = "Copy Prompt";
+            button.textContent = "COPY PROMPT";
         }, 1500);
     }
     catch (err) {
