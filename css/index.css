@@ -36,10 +36,11 @@ main .byline {
 
 .creative-prompt {
     max-width: 760px;
-    margin: 16px auto;
-    padding: 16px;
+    margin: 20px auto;
+    padding: 40px;
     text-align: center;
     background: #f60;
+    border: 2px solid #a40
     border-width: 2px;
     border-color: #a40;
     border-radius: 16px;
@@ -47,13 +48,13 @@ main .byline {
 
 .creative-prompt h2 {
     font-size: 24px;
-    font-color: #520;
+    color: #520;
     margin-bottom: 16px;
 }
 
 .creative-prompt p {
-    font-size: 16px;
-    font-color: #fb7;
+    font-size: 24px;
+    color: #fb7;
 }
 
 .creative-prompt button {
@@ -62,7 +63,8 @@ main .byline {
     font-size: 24;
     cursor: pointer;
     background: #a40;
-    font-color: #fb7;
+    color: #fb7;
+    border-radius: 16px;
 }
 
 /* PORTFOLIO SECTION */
