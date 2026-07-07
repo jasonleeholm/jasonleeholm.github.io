@@ -51,14 +51,16 @@ main .byline {
 }
 
 .creative-prompt p {
-    font-size: 24px;
+    font-size: 2rem;
+    line-height: 2.5rem;
     color: #a40;
 }
 
 .creative-prompt p strong {
     font-weight: bold;
-    font-size: 30px;
     color: #f60;
+    font-size: 3rem;
+    line-height: 3rem;
 }
 
 .creative-prompt button {
