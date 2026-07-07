@@ -50,7 +50,7 @@ function generatePrompt() {
     const adjective = randomItem(adjectives);
     const noun = randomItem(nouns);
 
-    currentPrompt = `Your Creative Prompt: Come up with an idea using ${articleFor(adjective)} ${adjective} ${noun} as the subject of inspiration. Interpret the prompt however you choose. Use any creative domain, medium, method, style, technique, or tool you want!`;
+    currentPrompt = `Your Creative Prompt: Come up with an idea using ${articleFor(adjective)} ${adjective} ${noun} as the subject of inspiration. Interpret the prompt however you choose. Use any creative domain, medium, method, process, style, technique, or tool you want!`;
 
     document.getElementById("creativePrompt").innerHTML =
         `<p>Come up with an idea using<br/>
@@ -58,7 +58,7 @@ function generatePrompt() {
         as the subject of inspiration.</p><br/>
         <p>Interpret the prompt however you choose.</p><br/>
         <p>Use any creative<br/>
-        <strong>domain, medium, method, style, technique, or tool</strong><br/>
+        <strong>domain, medium, method, process, style, technique, or tool</strong><br/>
         you want!</p>`;
 
 }
