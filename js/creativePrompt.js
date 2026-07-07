@@ -50,13 +50,13 @@ function generatePrompt() {
     const noun = randomItem(nouns);
 
     document.getElementById("creativePrompt").innerHTML =
-        `Come up with an idea using<br/>
+        `<p>Come up with an idea using<br/>
         <strong>${articleFor(adjective)} ${adjective} ${noun}</strong><br/>
-        as the subject of inspiration.<br/>
-        Interpret the prompt however you choose.<br/>
-        Use any<br/>
-        creative domain, medium, method, style, technique, or tool<br/>
-        you want!`;
+        as the subject of inspiration.</p>
+        <p>Interpret the prompt however you choose.</p>
+        <p>Use any<br/>
+        <strong>creative domain, medium, method, style, technique, or tool</strong><br/>
+        you want!</p>`;
 
 }
 
