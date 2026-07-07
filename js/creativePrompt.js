@@ -54,7 +54,9 @@ function generatePrompt() {
         <strong>${articleFor(adjective)} ${adjective} ${noun}</strong><br/>
         as the subject of inspiration.<br/>
         Interpret the prompt however you choose.<br/>
-        Use any creative domain, medium, method, style, technique, or tool you want!`;
+        Use any<br/>
+        creative domain, medium, method, style, technique, or tool<br/>
+        you want!`;
 
 }
 
