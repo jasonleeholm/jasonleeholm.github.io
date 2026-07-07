@@ -35,28 +35,34 @@ main .byline {
 /* CREATIVE PROMPT */
 
 .creative-prompt {
-    max-width: 900px;
-    margin: 60px auto;
-    padding: 40px;
+    max-width: 760px;
+    margin: 16px auto;
+    padding: 16px;
     text-align: center;
-    background: #f5f5f5;
-    border-radius: 12px;
+    background: #f60;
+    border-width: 2px;
+    border-color: #a40;
+    border-radius: 16px;
 }
 
 .creative-prompt h2 {
-    margin-bottom: 20px;
+    font-size: 24px;
+    font-color: #520;
+    margin-bottom: 16px;
 }
 
 .creative-prompt p {
-    font-size: 1.25rem;
-    line-height: 1.7;
+    font-size: 16px;
+    font-color: #fb7;
 }
 
 .creative-prompt button {
-    margin-top: 30px;
-    padding: 12px 28px;
-    font-size: 1rem;
+    margin-top: 16px;
+    padding: 16px 16px;
+    font-size: 24;
     cursor: pointer;
+    background: #a40;
+    font-color: #fb7;
 }
 
 /* PORTFOLIO SECTION */
