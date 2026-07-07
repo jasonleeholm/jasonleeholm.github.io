@@ -39,22 +39,26 @@ main .byline {
     margin: 20px auto;
     padding: 40px;
     text-align: center;
-    background: #f60;
-    border: 2px solid #a40
-    border-width: 2px;
-    border-color: #a40;
+    background: #fb7;
+    border: 2px solid #a40;
     border-radius: 16px;
 }
 
 .creative-prompt h2 {
-    font-size: 24px;
+    font-size: 30px;
     color: #520;
     margin-bottom: 16px;
 }
 
 .creative-prompt p {
     font-size: 24px;
-    color: #fb7;
+    color: #a40;
+}
+
+.creative-prompt p strong {
+    font-weight: bold;
+    font-size: 30px;
+    color: #f60;
 }
 
 .creative-prompt button {
