@@ -71,7 +71,8 @@ main .byline {
 }
 
 .creative-prompt button {
-    padding: 16px 16px;
+    padding: 8px;
+    width: 300px;
     font-size: 2rem;
     cursor: pointer;
     background: #a40;
