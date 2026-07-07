@@ -55,8 +55,8 @@ function generatePrompt() {
     document.getElementById("creativePrompt").innerHTML =
         `<p>Come up with an idea using<br/>
         <strong>${articleFor(adjective)} ${adjective} ${noun}</strong><br/>
-        as the subject of inspiration.</p>
-        <p>Interpret the prompt however you choose.</p>
+        as the subject of inspiration.</p><br/>
+        <p>Interpret the prompt however you choose.</p><br/>
         <p>Use any creative<br/>
         domain, medium, method, style, technique, or tool<br/>
         you want!</p>`;
