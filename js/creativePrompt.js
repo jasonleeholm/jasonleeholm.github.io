@@ -1,5 +1,6 @@
 let adjectives = [];
 let nouns = [];
+let currentPrompt = "";
 
 async function loadWordLists() {
 
@@ -49,21 +50,42 @@ function generatePrompt() {
     const adjective = randomItem(adjectives);
     const noun = randomItem(nouns);
 
-    document.getElementById("creativePrompt").innerHTML =
-        `<p>Come up with an idea using<br/>
-        <strong>${articleFor(adjective)} ${adjective} ${noun}</strong><br/>
-        as the subject of inspiration.</p>
-        <p>Interpret the prompt however you choose.</p>
-        <p>Use any<br/>
-        <strong>creative domain, medium, method, style, technique, or tool</strong><br/>
-        you want!</p>`;
+    currentPrompt = `Your Creative Prompt: Come up with an idea using ${articleFor(adjective)} ${adjective} ${noun} as the subject of inspiration. Interpret the prompt however you choose. Use any creative domain, medium, method, style, technique, or tool you want!`;
 
+    document.getElementById("creativePrompt").innerHTML =
+        `Come up with an idea using<br/>
+        <strong>${articleFor(adjective)} ${adjective} ${noun}</strong><br/>
+        as the subject of inspiration.<br/>
+        Interpret the prompt however you choose.<br/>
+        Use any<br/>
+        creative domain, medium, method, style, technique, or tool<br/>
+        you want!`;
+
+}
+
+async function copyPrompt() {
+
+    try {
+        await navigator.clipboard.writeText(currentPrompt);
+        const button = document.getElementById("copyPromptBtn");
+        button.textContent = "Copied!";
+        setTimeout(() => {
+            button.textContent = "Copy Prompt";
+        }, 1500);
+    }
+    catch (err) {
+        console.error(err);
+        alert("Unable to copy prompt.");
+    }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
 
     loadWordLists();
 
+    document.getElementById("copyPromptBtn")
+    .addEventListener("click", copyPrompt);
+    
     document.getElementById("newPromptBtn")
         .addEventListener("click", generatePrompt);
 
