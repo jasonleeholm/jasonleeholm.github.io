@@ -58,7 +58,7 @@ function generatePrompt() {
         as the subject of inspiration.</p><br/>
         <p>Interpret the prompt however you choose.</p><br/>
         <p>Use any creative<br/>
-        domain, medium, method, style, technique, or tool<br/>
+        <strong>domain, medium, method, style, technique, or tool</strong><br/>
         you want!</p>`;
 
 }
