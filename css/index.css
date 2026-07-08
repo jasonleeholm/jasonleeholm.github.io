@@ -37,7 +37,7 @@ main .byline {
 .creative-prompt {
     max-width: 760px;
     margin: 20px auto;
-    padding: 40px;
+    padding: 20px;
     text-align: center;
     background: #fb7;
     border: 2px solid #520;
@@ -61,6 +61,14 @@ main .byline {
     color: #520;
     font-size: 2.5rem;
     line-height: 3rem;
+}
+
+.creative-prompt a {
+    font-weight: bold;
+    color: #520;
+    font-size: 2.5rem;
+    line-height: 3rem;
+    text-decoration: underline;
 }
 
 .prompt-buttons {
