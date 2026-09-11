@@ -51,6 +51,11 @@ function articleFor(word) {
 
 function generatePrompt() {
 
+    if (!adjectives.length || !nouns.length || !domains.length) {
+        console.warn("Word lists not loaded yet");
+        return;
+    }
+
     const adjective = randomItem(adjectives);
     const noun = randomItem(nouns);
     const domain = randomItem(domains);
@@ -91,10 +96,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     loadWordLists();
 
-    document.getElementById("copyPromptBtn")
-    .addEventListener("click", copyPrompt);
+    const copyBtn = document.getElementById("copyPromptBtn");
+    const newBtn = document.getElementById("newPromptBtn");
     
-    document.getElementById("newPromptBtn")
-        .addEventListener("click", generatePrompt);
+    if (copyBtn) copyBtn.addEventListener("click", copyPrompt);
+    if (newBtn) newBtn.addEventListener("click", generatePrompt);
 
 });
