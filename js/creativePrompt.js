@@ -1,5 +1,6 @@
 let adjectives = [];
 let nouns = [];
+let domains = [];
 let currentPrompt = "";
 
 async function loadWordLists() {
@@ -8,6 +9,7 @@ async function loadWordLists() {
 
         const adjectiveResponse = await fetch("data/adjectives.txt");
         const nounResponse = await fetch("data/nouns.txt");
+        const domainResponse = await fetch("data/domains.json");
 
         adjectives = (await adjectiveResponse.text())
             .split(/\r?\n/)
@@ -18,6 +20,8 @@ async function loadWordLists() {
             .split(/\r?\n/)
             .map(word => word.trim())
             .filter(word => word.length);
+
+        domains = await domainResponse.json();
 
         generatePrompt();
 
@@ -49,8 +53,9 @@ function generatePrompt() {
 
     const adjective = randomItem(adjectives);
     const noun = randomItem(nouns);
+    const domain = randomItem(domains);
 
-    currentPrompt = `Your Creative Prompt: Come up with an idea using ${articleFor(adjective)} ${adjective} ${noun} as the subject of inspiration. Interpret the prompt however you choose. Use any creative concept, domain, form, format, genre, idea, intention, interactivity, material, medium, method, mood, motivation, process, skill, style, subject, technique, theme, or tool you want!`;
+    currentPrompt = `Your Creative Prompt: Come up with an idea using ${articleFor(adjective)} ${adjective} ${noun} as the subject of inspiration. Interpret the prompt however you choose. Use any creative concept, domain, form, format, genre, idea, intention, interactivity, material, medium, method, mood, motivation, process, skill, style, subject, technique, theme, or tool you want! Suggested domain: ${domain.name} - ${domain.description}`;
 
     document.getElementById("creativePrompt").innerHTML =
         `<p>Come up with an idea using<br/>
@@ -59,7 +64,10 @@ function generatePrompt() {
         <p>Interpret the prompt however you choose.</p><br/>
         <p>Use any creative<br/>
         <strong>concept, domain, form, format, genre, idea, intention, interactivity, material, medium, method, mood, motivation, process, skill, style, subject, technique, theme, or tool</strong><br/>
-        you want!</p>`;
+        you want!</p><br/>
+        <p>Suggested domain:<br/>
+        <strong>${domain.name}</strong><br/>
+        <em>${domain.description}</em></p>`;
 
 }
 
